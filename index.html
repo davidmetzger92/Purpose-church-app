@@ -374,14 +374,12 @@ CONFIG.tiles.forEach(function(tile) {
   var a = document.createElement('a');
   a.className = 'tile';
   a.href = tile.url;
+  a.target = '_blank';
+  a.rel = 'noopener';
   a.innerHTML =
     '<div class="tile-icon"><i class="ti ' + tile.icon + '"></i></div>' +
     '<span class="tile-label">' + tile.title + '</span>' +
     '<i class="ti ti-arrow-right tile-arrow"></i>';
-  a.addEventListener('click', function(e) {
-    e.preventDefault();
-    openBrowser(tile.url, tile.title);
-  });
   grid.appendChild(a);
 });
 
