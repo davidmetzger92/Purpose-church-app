@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Purpose">
+  <meta name="theme-color" content="#174a74">
+  <meta name="description" content="Purpose Church Goodyear, AZ — Discover Your God-Given Purpose">
+  <title>Purpose Church</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+
+  <style>
+    :root {
+      --navy:        #174a74;
+      --navy-dark:   #123a5c;
+      --orange:      #e37054;
+      --orange-dark: #c85e41;
+      --bg:          #eef3f8;
+      --ink:         #0f1f2e;
+      --muted:       #425568;
+      --card:        #ffffff;
+      --rule:        #dde6ef;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--navy);
+      padding-top: max(env(safe-area-inset-top), 32px);
+      padding-bottom: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-align: center;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.13);
+      border-radius: 20px;
+      padding: 5px 13px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+    }
+    .header-badge i { font-size: 13px; }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 22px 16px calc(22px + env(safe-area-inset-bottom, 0px));
+    }
+    .section-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 11px;
+    }
+
+    /* ── TILES ── */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .tile {
+      background: var(--card);
+      border-radius: 18px;
+      border: 0.5px solid var(--rule);
+      padding: 18px 15px 16px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 11px;
+      min-height: 120px;
+      transition: transform 0.12s ease;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+    }
+    .tile:active { transform: scale(0.96); }
+    .tile-icon {
+      width: 44px; height: 44px;
+      border-radius: 13px;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tile-icon i { font-size: 22px; color: var(--navy); }
+    .tile-label { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.3; flex: 1; }
+    .tile-arrow { font-size: 15px; color: var(--muted); opacity: 0.6; }
+
+    /* ── GIVE BUTTON ── */
+    .give-btn {
+      display: flex; align-items: center; gap: 10px;
+      width: 100%;
+      background: var(--orange); color: #fff;
+      text-decoration: none;
+      border-radius: 18px;
+      padding: 18px 20px;
+      font-size: 15px; font-weight: 600;
+      margin-bottom: 10px;
+      transition: transform 0.12s ease, background 0.12s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .give-btn:active { transform: scale(0.97); background: var(--orange-dark); }
+    .give-btn i { font-size: 20px; }
+
+    /* ── LOCATION CARD ── */
+    .location-card {
+      display: flex; align-items: center; gap: 13px;
+      background: var(--card);
+      border-radius: 18px; border: 0.5px solid var(--rule);
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: transform 0.12s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .location-card:active { transform: scale(0.98); }
+    .location-icon {
+      width: 42px; height: 42px;
+      border-radius: 13px; background: var(--bg);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .location-icon i { font-size: 20px; color: var(--navy); }
+    .location-info { flex: 1; }
+    .location-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+    .location-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .location-card > i { font-size: 16px; color: var(--muted); opacity: 0.5; }
+
+    /* ── INSTALL HINT ── */
+    .install-hint {
+      display: none; align-items: center; gap: 8px;
+      background: var(--card); border-radius: 14px;
+      border: 0.5px solid var(--rule);
+      padding: 11px 14px; margin-top: 10px;
+      font-size: 12px; color: var(--muted);
+    }
+    .install-hint i { font-size: 16px; color: var(--navy); flex-shrink: 0; }
+    .close-hint { margin-left: auto; font-size: 16px; cursor: pointer; opacity: 0.5; }
+
+    /* ── IN-APP BROWSER ── */
+    .browser-overlay {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      z-index: 999;
+      flex-direction: column;
+    }
+    .browser-overlay.open { display: flex; }
+
+    .browser-bar {
+      background: var(--navy);
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 16px;
+      padding-top: max(env(safe-area-inset-top), 10px);
+      flex-shrink: 0;
+    }
+    .browser-back {
+      display: flex; align-items: center; gap: 4px;
+      color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 500;
+      background: none; border: none; cursor: pointer; padding: 6px 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .browser-back i { font-size: 18px; }
+    .browser-title {
+      flex: 1; font-size: 13px; font-weight: 600;
+      color: #fff; text-align: center;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .browser-external {
+      display: flex; align-items: center;
+      color: rgba(255,255,255,0.75); font-size: 14px;
+      background: none; border: none; cursor: pointer; padding: 6px 0;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .browser-external i { font-size: 18px; }
+
+    .browser-loading {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; color: var(--muted); font-size: 14px;
+    }
+    .spinner {
+      width: 28px; height: 28px;
+      border: 2.5px solid var(--rule);
+      border-top-color: var(--navy);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .browser-iframe {
+      flex: 1; border: none; width: 100%;
+      display: none;
+    }
+
+    .browser-blocked {
+      flex: 1; display: none;
+      flex-direction: column; align-items: center; justify-content: center;
+      padding: 40px 24px; gap: 14px; text-align: center;
+    }
+    .browser-blocked i { font-size: 36px; color: var(--muted); opacity: 0.4; }
+    .browser-blocked p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+    .open-external-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--navy); color: #fff;
+      border: none; border-radius: 12px;
+      padding: 12px 20px; font-size: 14px; font-weight: 600;
+      cursor: pointer; text-decoration: none; margin-top: 4px;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     ✏️  EDIT HERE — update links, text, times, etc.
+     ═══════════════════════════════════════════════ -->
+<script>
+const CONFIG = {
+
+  // Service times shown in the header badge
+  times: "Sundays 9 & 10:30am",
+
+  // Location card
+  location: {
+    name:    "Desert Edge High School",
+    address: "15778 W Yuma Rd · Goodyear, AZ",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338"
+  },
+
+  // Give button — always opens externally (payment pages block iframes)
+  giveUrl: "https://purpose.mywell.org",
+
+  // Quick-link tiles — add, remove, or reorder freely.
+  // Icons: https://tabler.io/icons (use the "ti-" prefix)
+  tiles: [
+    {
+      title: "I'm New",
+      icon:  "ti-user-plus",
+      url:   "https://purposearizona.com/connectcard"
+    },
+    {
+      title: "Message Notes",
+      icon:  "ti-notebook",
+      url:   "https://purposearizona.com/notes"
+    },
+    {
+      title: "Join a Serving Team",
+      icon:  "ti-heart-handshake",
+      url:   "https://purposearizona.com/serve"
+    },
+    {
+      title: "Spiritual Gifts Class",
+      icon:  "ti-sparkles",
+      url:   "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b"
+    }
+  ]
+
+};
+</script>
+<!-- ═══════════════════════════════════════════════ -->
+
+
+<!-- HEADER -->
+<header class="header">
+  <img src="logos/logo-horizontal-white.png"
+       alt="Purpose Church"
+       style="height:52px; width:auto; display:block; margin:0 auto;">
+  <div class="header-badge">
+    <i class="ti ti-clock"></i>
+    <span id="js-times"></span>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="content">
+  <p class="section-label">Quick links</p>
+  <div class="tile-grid" id="js-tiles"></div>
+
+  <a class="give-btn" id="js-give" href="#" target="_blank" rel="noopener">
+    <i class="ti ti-heart"></i>
+    Give online
+    <span style="flex:1"></span>
+    <i class="ti ti-arrow-right" style="font-size:15px; opacity:0.75;"></i>
+  </a>
+
+  <a class="location-card" id="js-location" href="#" target="_blank" rel="noopener">
+    <div class="location-icon"><i class="ti ti-map-pin"></i></div>
+    <div class="location-info">
+      <div class="location-name" id="js-loc-name"></div>
+      <div class="location-detail" id="js-loc-detail"></div>
+    </div>
+    <i class="ti ti-chevron-right"></i>
+  </a>
+
+  <div class="install-hint" id="js-install-hint">
+    <i class="ti ti-share"></i>
+    <span>Tap <strong>Share</strong> then <strong>Add to Home Screen</strong> for the full app experience.</span>
+    <i class="ti ti-x close-hint" id="js-close-hint"></i>
+  </div>
+</main>
+
+
+<!-- IN-APP BROWSER OVERLAY -->
+<div class="browser-overlay" id="js-browser-overlay">
+  <div class="browser-bar">
+    <button class="browser-back" onclick="closeBrowser()">
+      <i class="ti ti-chevron-left"></i> Back
+    </button>
+    <div class="browser-title" id="js-browser-title"></div>
+    <a class="browser-external" id="js-browser-external" href="#" target="_blank" rel="noopener"
+       title="Open in browser">
+      <i class="ti ti-external-link"></i>
+    </a>
+  </div>
+
+  <div class="browser-loading" id="js-browser-loading">
+    <div class="spinner"></div>
+    <span>Loading…</span>
+  </div>
+
+  <iframe class="browser-iframe" id="js-browser-iframe"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+          title="In-app browser"></iframe>
+
+  <div class="browser-blocked" id="js-browser-blocked">
+    <i class="ti ti-lock"></i>
+    <p>This page needs to open in your browser.</p>
+    <a class="open-external-btn" id="js-browser-open-btn" href="#" target="_blank" rel="noopener">
+      <i class="ti ti-external-link"></i> Open page
+    </a>
+  </div>
+</div>
+
+
+<script>
+// ── Render CONFIG ───────────────────────────────
+document.getElementById('js-times').textContent      = CONFIG.times;
+document.getElementById('js-give').href              = CONFIG.giveUrl;
+document.getElementById('js-location').href          = CONFIG.location.mapsUrl;
+document.getElementById('js-loc-name').textContent   = CONFIG.location.name;
+document.getElementById('js-loc-detail').textContent = CONFIG.times + ' · ' + CONFIG.location.address;
+
+// ── Build tiles ─────────────────────────────────
+const grid = document.getElementById('js-tiles');
+CONFIG.tiles.forEach(function(tile) {
+  var a = document.createElement('a');
+  a.className = 'tile';
+  a.href = tile.url;
+  a.innerHTML =
+    '<div class="tile-icon"><i class="ti ' + tile.icon + '"></i></div>' +
+    '<span class="tile-label">' + tile.title + '</span>' +
+    '<i class="ti ti-arrow-right tile-arrow"></i>';
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    openBrowser(tile.url, tile.title);
+  });
+  grid.appendChild(a);
+});
+
+// ── In-app browser ──────────────────────────────
+var currentUrl = '';
+
+function openBrowser(url, title) {
+  currentUrl = url;
+  var overlay   = document.getElementById('js-browser-overlay');
+  var iframe    = document.getElementById('js-browser-iframe');
+  var loading   = document.getElementById('js-browser-loading');
+  var blocked   = document.getElementById('js-browser-blocked');
+  var titleEl   = document.getElementById('js-browser-title');
+  var extLink   = document.getElementById('js-browser-external');
+  var openBtn   = document.getElementById('js-browser-open-btn');
+
+  // Reset state
+  iframe.style.display  = 'none';
+  loading.style.display = 'flex';
+  blocked.style.display = 'none';
+  titleEl.textContent   = title;
+  extLink.href          = url;
+  openBtn.href          = url;
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Load iframe
+  iframe.src = '';
+  setTimeout(function() { iframe.src = url; }, 50);
+
+  // On load: hide spinner, show iframe
+  iframe.onload = function() {
+    loading.style.display = 'none';
+    iframe.style.display  = 'block';
+  };
+
+  // On error (X-Frame-Options blocked): show fallback
+  iframe.onerror = function() {
+    loading.style.display = 'none';
+    blocked.style.display = 'flex';
+  };
+
+  // Fallback timeout — if no load event after 8s, show blocked UI
+  var loadTimer = setTimeout(function() {
+    if (loading.style.display !== 'none') {
+      loading.style.display = 'none';
+      blocked.style.display = 'flex';
+    }
+  }, 8000);
+
+  iframe.onload = function() {
+    clearTimeout(loadTimer);
+    loading.style.display = 'none';
+    iframe.style.display  = 'block';
+  };
+}
+
+function closeBrowser() {
+  var overlay = document.getElementById('js-browser-overlay');
+  var iframe  = document.getElementById('js-browser-iframe');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(function() { iframe.src = ''; }, 200);
+}
+
+// Back gesture on Android (hardware back button)
+window.addEventListener('popstate', function() {
+  var overlay = document.getElementById('js-browser-overlay');
+  if (overlay.classList.contains('open')) {
+    closeBrowser();
+  }
+});
+document.getElementById('js-browser-overlay').addEventListener('transitionend', function() {});
+
+// ── iOS install hint ────────────────────────────
+var isIOS     = /iphone|ipad|ipod/i.test(navigator.userAgent);
+var inApp     = window.navigator.standalone === true;
+var dismissed = sessionStorage.getItem('hint-dismissed');
+if (isIOS && !inApp && !dismissed) {
+  document.getElementById('js-install-hint').style.display = 'flex';
+}
+document.getElementById('js-close-hint').addEventListener('click', function() {
+  document.getElementById('js-install-hint').style.display = 'none';
+  sessionStorage.setItem('hint-dismissed', '1');
+});
+
+// ── Service Worker ──────────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').catch(function() {});
+  });
+}
+</script>
+</body>
+</html>
