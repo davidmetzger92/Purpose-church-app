@@ -325,6 +325,13 @@ const CONFIG = {
     <span>Tap <strong>Share</strong> then <strong>Add to Home Screen</strong> for the full app experience.</span>
     <i class="ti ti-x close-hint" id="js-close-hint"></i>
   </div>
+
+  <button class="give-btn install-btn" id="js-install-btn" type="button" style="display:none; border:none; cursor:pointer; background:var(--navy); margin-top:10px;">
+    <i class="ti ti-download"></i>
+    Install app
+    <span style="flex:1"></span>
+    <i class="ti ti-arrow-right" style="font-size:15px; opacity:0.75;"></i>
+  </button>
 </main>
 
 
@@ -374,14 +381,12 @@ CONFIG.tiles.forEach(function(tile) {
   var a = document.createElement('a');
   a.className = 'tile';
   a.href = tile.url;
+  a.target = '_blank';
+  a.rel = 'noopener';
   a.innerHTML =
     '<div class="tile-icon"><i class="ti ' + tile.icon + '"></i></div>' +
     '<span class="tile-label">' + tile.title + '</span>' +
     '<i class="ti ti-arrow-right tile-arrow"></i>';
-  a.addEventListener('click', function(e) {
-    e.preventDefault();
-    openBrowser(tile.url, tile.title);
-  });
   grid.appendChild(a);
 });
 
@@ -467,6 +472,32 @@ if (isIOS && !inApp && !dismissed) {
 document.getElementById('js-close-hint').addEventListener('click', function() {
   document.getElementById('js-install-hint').style.display = 'none';
   sessionStorage.setItem('hint-dismissed', '1');
+});
+
+// ── Android / Chrome install prompt ─────────────
+// Browsers fire 'beforeinstallprompt' when the app is installable.
+// We capture it and show our own "Install app" button instead.
+var deferredPrompt = null;
+var installBtn     = document.getElementById('js-install-btn');
+
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();              // stop the default mini-infobar
+  deferredPrompt = e;
+  installBtn.style.display = 'flex';
+});
+
+installBtn.addEventListener('click', function() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.finally(function() {
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
+  });
+});
+
+// Hide the button once installed
+window.addEventListener('appinstalled', function() {
+  installBtn.style.display = 'none';
 });
 
 // ── Service Worker ──────────────────────────────
