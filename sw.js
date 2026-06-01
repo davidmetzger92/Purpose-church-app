@@ -2,9 +2,9 @@
 // Bump the version string any time you deploy an update.
 const VERSION = 'purpose-app-v1';
 const SHELL = [
-  '/',
-  '/index.html',
-  '/manifest.json'
+  './',
+  './index.html',
+  './manifest.json'
 ];
 
 self.addEventListener('install', function (event) {
@@ -34,7 +34,7 @@ self.addEventListener('fetch', function (event) {
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request).catch(function () {
-        return caches.match('/index.html');
+        return caches.match('./index.html');
       })
     );
     return;
