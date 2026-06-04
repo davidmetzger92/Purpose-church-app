@@ -1,10 +1,11 @@
 // Service Worker — caches the app shell for offline use.
 // Bump the version string any time you deploy an update.
-const VERSION = 'purpose-app-v2';
+const VERSION = 'purpose-app-v3';
 const SHELL = [
   './',
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  './content.json'
 ];
 
 self.addEventListener('install', function (event) {
