@@ -9,8 +9,7 @@ backend:
   repo: davidmetzger92/Purpose-church-app   # owner/repo
   branch: main
   # base_url points at your free login relay (Cloudflare Worker).
-  # Replace the placeholder below after you deploy it (see SETUP-ADMIN.md).
-  base_url: https://REPLACE-WITH-YOUR-AUTH-WORKER.workers.dev
+  base_url: https://sveltia-cms-auth.david-metzger92.workers.dev
 
 # Where uploaded images would go (optional — not used by default).
 media_folder: "logos"
