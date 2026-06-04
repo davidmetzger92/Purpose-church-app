@@ -1,0 +1,87 @@
+# ─────────────────────────────────────────────────────────────
+#  Admin panel configuration
+#  This controls WHICH fields staff can edit. It is intentionally
+#  limited to content — staff cannot change the app's structure.
+# ─────────────────────────────────────────────────────────────
+
+backend:
+  name: github
+  repo: davidmetzger92/Purpose-church-app   # owner/repo
+  branch: main
+  # base_url points at your free login relay (Cloudflare Worker).
+  # Replace the placeholder below after you deploy it (see SETUP-ADMIN.md).
+  base_url: https://REPLACE-WITH-YOUR-AUTH-WORKER.workers.dev
+
+# Where uploaded images would go (optional — not used by default).
+media_folder: "logos"
+public_folder: "logos"
+
+# A single, friendly editing screen mapped to content.json.
+collections:
+  - name: app
+    label: "App Content"
+    files:
+      - name: home
+        label: "Home Screen"
+        file: "content.json"
+        description: "Edit the text, links, and buttons shown in the app."
+        fields:
+          - label: "Service Times"
+            name: times
+            widget: string
+            hint: 'Shown in the header, e.g. "Sundays 9 & 10:30am"'
+
+          - label: "Location"
+            name: location
+            widget: object
+            fields:
+              - { label: "Place Name", name: name, widget: string }
+              - { label: "Address", name: address, widget: string }
+              - label: "Google Maps Link"
+                name: mapsUrl
+                widget: string
+                hint: "Paste a Google Maps link for the location."
+
+          - label: "Give Link"
+            name: giveUrl
+            widget: string
+            hint: "The online giving page. Opens in the browser."
+
+          - label: "Quick-Link Buttons"
+            name: tiles
+            widget: list
+            label_singular: "Button"
+            summary: "{{fields.title}}"
+            hint: "Add, remove, reorder, or rename the buttons on the home screen."
+            fields:
+              - { label: "Button Text", name: title, widget: string }
+              - label: "Icon"
+                name: icon
+                widget: select
+                hint: "Pick an icon for the button."
+                options:
+                  - { label: "Person / New here", value: ti-user-plus }
+                  - { label: "Notebook / Notes", value: ti-notebook }
+                  - { label: "Hands / Serve", value: ti-heart-handshake }
+                  - { label: "Sparkles", value: ti-sparkles }
+                  - { label: "Heart", value: ti-heart }
+                  - { label: "Calendar / Events", value: ti-calendar-event }
+                  - { label: "Map pin", value: ti-map-pin }
+                  - { label: "Video", value: ti-video }
+                  - { label: "Headphones / Podcast", value: ti-headphones }
+                  - { label: "Book", value: ti-book }
+                  - { label: "Music / Worship", value: ti-music }
+                  - { label: "People / Groups", value: ti-users }
+                  - { label: "Gift", value: ti-gift }
+                  - { label: "Cross", value: ti-cross }
+                  - { label: "Bell / Announcements", value: ti-bell }
+                  - { label: "Coffee", value: ti-coffee }
+                  - { label: "Phone", value: ti-phone }
+                  - { label: "Mail", value: ti-mail }
+                  - { label: "Globe / Website", value: ti-world }
+                  - { label: "Microphone", value: ti-microphone-2 }
+                  - { label: "School / Class", value: ti-school }
+              - label: "Link URL"
+                name: url
+                widget: string
+                hint: "Where the button goes. Opens in the browser."

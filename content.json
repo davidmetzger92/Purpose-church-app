@@ -1,0 +1,31 @@
+{
+  "times": "Sundays 9 & 10:30am",
+  "location": {
+    "name": "Desert Edge High School",
+    "address": "15778 W Yuma Rd · Goodyear, AZ",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338"
+  },
+  "giveUrl": "https://purpose.mywell.org",
+  "tiles": [
+    {
+      "title": "I'm New",
+      "icon": "ti-user-plus",
+      "url": "https://purposearizona.com/connectcard"
+    },
+    {
+      "title": "Message Notes",
+      "icon": "ti-notebook",
+      "url": "https://purposearizona.com/notes"
+    },
+    {
+      "title": "Join a Serving Team",
+      "icon": "ti-heart-handshake",
+      "url": "https://purposearizona.com/serve"
+    },
+    {
+      "title": "Spiritual Gifts Class",
+      "icon": "ti-sparkles",
+      "url": "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b"
+    }
+  ]
+}

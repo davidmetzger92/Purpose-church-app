@@ -242,50 +242,10 @@
 <!-- ═══════════════════════════════════════════════
      ✏️  EDIT HERE — update links, text, times, etc.
      ═══════════════════════════════════════════════ -->
-<script>
-const CONFIG = {
-
-  // Service times shown in the header badge
-  times: "Sundays 9 & 10:30am",
-
-  // Location card
-  location: {
-    name:    "Desert Edge High School",
-    address: "15778 W Yuma Rd · Goodyear, AZ",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338"
-  },
-
-  // Give button — always opens externally (payment pages block iframes)
-  giveUrl: "https://purpose.mywell.org",
-
-  // Quick-link tiles — add, remove, or reorder freely.
-  // Icons: https://tabler.io/icons (use the "ti-" prefix)
-  tiles: [
-    {
-      title: "I'm New",
-      icon:  "ti-user-plus",
-      url:   "https://purposearizona.com/connectcard"
-    },
-    {
-      title: "Message Notes",
-      icon:  "ti-notebook",
-      url:   "https://purposearizona.com/notes"
-    },
-    {
-      title: "Join a Serving Team",
-      icon:  "ti-heart-handshake",
-      url:   "https://purposearizona.com/serve"
-    },
-    {
-      title: "Spiritual Gifts Class",
-      icon:  "ti-sparkles",
-      url:   "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b"
-    }
-  ]
-
-};
-</script>
-<!-- ═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════
+     Content lives in content.json (edited via /admin).
+     Do not hard-code text or links here.
+     ═══════════════════════════════════════════════ -->
 
 
 <!-- HEADER -->
@@ -368,27 +328,40 @@ const CONFIG = {
 
 
 <script>
-// ── Render CONFIG ───────────────────────────────
-document.getElementById('js-times').textContent      = CONFIG.times;
-document.getElementById('js-give').href              = CONFIG.giveUrl;
-document.getElementById('js-location').href          = CONFIG.location.mapsUrl;
-document.getElementById('js-loc-name').textContent   = CONFIG.location.name;
-document.getElementById('js-loc-detail').textContent = CONFIG.times + ' · ' + CONFIG.location.address;
+// ── Load + render content from content.json ─────
+// Content is edited via the /admin panel, which writes content.json.
+// Cache-bust so edits show up promptly even with the service worker.
+fetch('content.json?v=' + Date.now())
+  .then(function(res) { return res.json(); })
+  .then(renderContent)
+  .catch(function() {
+    // Offline / fetch failed — fall back to whatever the SW cached.
+    fetch('content.json').then(function(res) { return res.json(); }).then(renderContent);
+  });
 
-// ── Build tiles ─────────────────────────────────
-const grid = document.getElementById('js-tiles');
-CONFIG.tiles.forEach(function(tile) {
-  var a = document.createElement('a');
-  a.className = 'tile';
-  a.href = tile.url;
-  a.target = '_blank';
-  a.rel = 'noopener';
-  a.innerHTML =
-    '<div class="tile-icon"><i class="ti ' + tile.icon + '"></i></div>' +
-    '<span class="tile-label">' + tile.title + '</span>' +
-    '<i class="ti ti-arrow-right tile-arrow"></i>';
-  grid.appendChild(a);
-});
+function renderContent(CONFIG) {
+  document.getElementById('js-times').textContent      = CONFIG.times;
+  document.getElementById('js-give').href              = CONFIG.giveUrl;
+  document.getElementById('js-location').href          = CONFIG.location.mapsUrl;
+  document.getElementById('js-loc-name').textContent   = CONFIG.location.name;
+  document.getElementById('js-loc-detail').textContent = CONFIG.times + ' · ' + CONFIG.location.address;
+
+  // ── Build tiles ─────────────────────────────────
+  var grid = document.getElementById('js-tiles');
+  grid.innerHTML = '';
+  CONFIG.tiles.forEach(function(tile) {
+    var a = document.createElement('a');
+    a.className = 'tile';
+    a.href = tile.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML =
+      '<div class="tile-icon"><i class="ti ' + tile.icon + '"></i></div>' +
+      '<span class="tile-label">' + tile.title + '</span>' +
+      '<i class="ti ti-arrow-right tile-arrow"></i>';
+    grid.appendChild(a);
+  });
+}
 
 // ── In-app browser ──────────────────────────────
 var currentUrl = '';
