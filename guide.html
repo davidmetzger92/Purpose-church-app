@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Editing the Purpose App — Staff Guide</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+
+  <style>
+    :root {
+      --navy:        #174a74;
+      --navy-dark:   #123a5c;
+      --orange:      #e37054;
+      --orange-dark: #c85e41;
+      --bg:          #eef3f8;
+      --ink:         #0f1f2e;
+      --muted:       #425568;
+      --card:        #ffffff;
+      --rule:        #dde6ef;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.55;
+    }
+
+    /* ── HEADER ── */
+    .hero {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
+      padding: 40px 20px 56px;
+      text-align: center;
+      color: #fff;
+    }
+    .hero img { height: 46px; width: auto; margin-bottom: 22px; }
+    .hero h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.01em; }
+    .hero p { font-size: 14.5px; color: rgba(255,255,255,0.82); margin-top: 8px; max-width: 30ch; margin-left:auto; margin-right:auto; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.13); border-radius: 20px;
+      padding: 6px 14px; margin-top: 18px; font-size: 12.5px; font-weight: 500;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width: 640px; margin: -34px auto 0; padding: 0 16px 60px; }
+
+    .card {
+      background: var(--card); border-radius: 20px;
+      border: 0.5px solid var(--rule);
+      box-shadow: 0 8px 30px rgba(23,74,116,0.06);
+      padding: 26px 22px; margin-bottom: 16px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--orange-dark);
+      margin-bottom: 14px;
+    }
+    .eyebrow i { font-size: 15px; }
+    h2 { font-size: 19px; font-weight: 700; margin-bottom: 4px; }
+    .sub { font-size: 13.5px; color: var(--muted); margin-bottom: 18px; }
+
+    /* ── STEPS ── */
+    .step { display: flex; gap: 14px; padding: 13px 0; border-top: 1px solid var(--rule); }
+    .step:first-of-type { border-top: none; padding-top: 4px; }
+    .step-num {
+      flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700;
+    }
+    .step-body { flex: 1; padding-top: 3px; }
+    .step-body strong { font-weight: 600; }
+    .step-body .note { font-size: 13px; color: var(--muted); margin-top: 3px; }
+    a { color: var(--navy); font-weight: 600; word-break: break-word; }
+
+    /* ── FIELD LIST ── */
+    .field { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; border-top: 1px solid var(--rule); }
+    .field:first-child { border-top: none; padding-top: 2px; }
+    .field-icon {
+      flex-shrink: 0; width: 38px; height: 38px; border-radius: 11px;
+      background: var(--bg); display: flex; align-items: center; justify-content: center;
+    }
+    .field-icon i { font-size: 19px; color: var(--navy); }
+    .field-text { flex: 1; }
+    .field-text b { font-size: 14px; font-weight: 600; }
+    .field-text p { font-size: 13px; color: var(--muted); margin-top: 1px; }
+
+    /* ── CALLOUTS ── */
+    .tip {
+      display: flex; gap: 11px; align-items: flex-start;
+      background: var(--bg); border-radius: 13px;
+      padding: 13px 14px; margin-top: 10px; font-size: 13.5px;
+    }
+    .tip:first-of-type { margin-top: 0; }
+    .tip i { font-size: 18px; color: var(--navy); flex-shrink: 0; margin-top: 1px; }
+    .tip.warn { background: #fdeee9; }
+    .tip.warn i { color: var(--orange-dark); }
+
+    .cta {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      background: var(--orange); color: #fff; text-decoration: none;
+      border-radius: 14px; padding: 16px; font-size: 15px; font-weight: 600;
+      margin-top: 4px; transition: background 0.15s ease;
+    }
+    .cta:hover { background: var(--orange-dark); color: #fff; }
+    .cta i { font-size: 19px; }
+
+    .footer { text-align: center; font-size: 12.5px; color: var(--muted); padding: 8px 0 0; }
+    .footer strong { color: var(--ink); }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <img src="logos/logo-horizontal-white.png" alt="Purpose Church">
+    <h1>Editing the App</h1>
+    <p>A quick guide to updating buttons, links, and service times.</p>
+    <div class="hero-badge"><i class="ti ti-clock"></i> Takes about a minute</div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- FIRST TIME -->
+    <section class="card">
+      <span class="eyebrow"><i class="ti ti-rocket"></i> First time only · ~5 min</span>
+      <h2>Get set up</h2>
+      <p class="sub">You only do these two things once.</p>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Make a free GitHub account</strong> at
+          <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a>.
+          <div class="note">You can use your normal email. Save your username and password somewhere safe.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Accept the invite.</strong> David will email you an invite to the project — open it and click <strong>Accept</strong>.
+          <div class="note">This is what lets your changes save. Without it, edits won't stick.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAKE A CHANGE -->
+    <section class="card">
+      <span class="eyebrow"><i class="ti ti-pencil"></i> Every time</span>
+      <h2>Make a change</h2>
+      <p class="sub">Open the editor, change what you need, hit Save.</p>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          Open the editor and click <strong>Sign In with GitHub</strong>.
+          <div class="note">Keep the editor link to yourself — it's the staff door, not the public app.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">Click <strong>App Content</strong> → <strong>Home Screen</strong>.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">Change what you need (see below), then click <strong>Save</strong> in the top-right.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          Wait about a minute, then open or refresh the app to see it.
+          <div class="note">Already-open apps update on the next refresh.</div>
+        </div>
+      </div>
+
+      <a class="cta" href="admin/" target="_blank" rel="noopener">
+        <i class="ti ti-edit"></i> Open the Editor
+      </a>
+    </section>
+
+    <!-- WHAT YOU CAN EDIT -->
+    <section class="card">
+      <span class="eyebrow"><i class="ti ti-adjustments"></i> The fields</span>
+      <h2>What you can edit</h2>
+      <p class="sub">Everything on the app's home screen, in one form.</p>
+
+      <div class="field">
+        <div class="field-icon"><i class="ti ti-clock"></i></div>
+        <div class="field-text"><b>Service Times</b><p>The times shown at the top of the app.</p></div>
+      </div>
+      <div class="field">
+        <div class="field-icon"><i class="ti ti-map-pin"></i></div>
+        <div class="field-text"><b>Location</b><p>Place name, address, and the map link.</p></div>
+      </div>
+      <div class="field">
+        <div class="field-icon"><i class="ti ti-heart"></i></div>
+        <div class="field-text"><b>Give Link</b><p>Where the "Give online" button goes.</p></div>
+      </div>
+      <div class="field">
+        <div class="field-icon"><i class="ti ti-apps"></i></div>
+        <div class="field-text"><b>Quick-Link Buttons</b><p>Add, remove, reorder, or rename buttons. Each has a name, an icon (from a dropdown), and a link.</p></div>
+      </div>
+    </section>
+
+    <!-- GOOD TO KNOW -->
+    <section class="card">
+      <span class="eyebrow"><i class="ti ti-bulb"></i> Good to know</span>
+      <h2>You can't break it</h2>
+      <p class="sub">A few things that make this stress-free.</p>
+
+      <div class="tip">
+        <i class="ti ti-shield-check"></i>
+        <div>You're only editing text and links — the design and layout are locked. Worst case is a typo; just fix it and Save again.</div>
+      </div>
+      <div class="tip">
+        <i class="ti ti-list-check"></i>
+        <div>Icons come from a dropdown, so you can't mistype them. To add a button, use <strong>+ Add</strong> under Quick-Link Buttons.</div>
+      </div>
+      <div class="tip warn">
+        <i class="ti ti-help-circle"></i>
+        <div>Stuck or unsure? Don't force it — text David before changing anything you're not confident about.</div>
+      </div>
+    </section>
+
+    <p class="footer">Made for <strong>Purpose Church</strong> · Goodyear, AZ</p>
+
+  </main>
+
+</body>
+</html>
