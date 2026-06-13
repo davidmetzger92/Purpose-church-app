@@ -55,7 +55,8 @@ Returning users (and installed PWAs) cache the app shell. After changing
 - The `/admin` login relies on the Cloudflare Worker auth relay
   (see `SETUP-ADMIN.md`) and the GitHub OAuth app — leave `admin/config.yml`'s
   `base_url` pointed at the Worker.
-- Keep image paths in `admin/config.yml` **relative** (`media_folder`/
-  `public_folder: "photos"`, no leading `/`) so they resolve under the
-  GitHub Pages subfolder.
+- Image paths: the CMS may store them root-absolute (`/photos/x.jpg`), which
+  would break under the GitHub Pages subfolder. `index.html`'s `bgVar()` strips
+  the leading `/` so paths resolve relative to the page (works at subfolder,
+  root, or custom domain). Keep that normalization if you refactor the render.
 - Keep `manifest.json` + icons intact so PWA install keeps working.
