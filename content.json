@@ -6,26 +6,52 @@
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338"
   },
   "giveUrl": "https://purpose.mywell.org",
+  "hero": {
+    "image": "photos/hero.jpg",
+    "headline": "Take Your Next Step",
+    "serviceTimes": "Sundays 9 & 10:30am"
+  },
   "tiles": [
     {
-      "title": "I'm New",
-      "icon": "ti-user-plus",
-      "url": "https://purposearizona.com/connectcard"
+      "icon": "user",
+      "label": "I'm New",
+      "url": "https://purposearizona.com/connectcard",
+      "image": "photos/tile-new.jpg"
     },
     {
-      "title": "Message Notes",
-      "icon": "ti-notebook",
-      "url": "https://purposearizona.com/notes"
+      "icon": "file",
+      "label": "Message Notes",
+      "url": "https://purposearizona.com/notes",
+      "image": "photos/tile-notes.jpg"
     },
     {
-      "title": "Join a Serving Team",
-      "icon": "ti-heart-handshake",
-      "url": "https://purposearizona.com/serve"
+      "icon": "users",
+      "label": "Join the Dream Team",
+      "url": "https://purposearizona.com/serve",
+      "image": "photos/tile-serve.jpg"
     },
     {
-      "title": "Spiritual Gifts Class",
-      "icon": "ti-gift",
-      "url": "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b"
+      "icon": "sparkle",
+      "label": "Spiritual Gifts",
+      "url": "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b",
+      "image": "photos/tile-gifts.jpg"
+    },
+    {
+      "icon": "gift",
+      "label": "Give",
+      "url": "https://purpose.mywell.org",
+      "image": "photos/tile-give.jpg"
+    },
+    {
+      "icon": "pin",
+      "label": "Plan a Visit",
+      "url": "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338",
+      "image": "photos/tile-visit.jpg"
     }
-  ]
+  ],
+  "discover": {
+    "heading": "Discover Your Purpose",
+    "body": "We believe you were made on purpose, for a purpose. Come find yours with us.",
+    "image": "photos/discover.jpg"
+  }
 }

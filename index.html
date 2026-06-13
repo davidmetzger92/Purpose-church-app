@@ -7,476 +7,351 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Purpose">
-  <meta name="theme-color" content="#174a74">
-  <meta name="description" content="Purpose Church Goodyear, AZ — Discover Your God-Given Purpose">
+  <meta name="theme-color" content="#0b0f14">
+  <meta name="description" content="Purpose Church Goodyear, AZ — Take Your Next Step">
   <title>Purpose Church</title>
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-180.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --navy:        #174a74;
-      --navy-dark:   #123a5c;
-      --orange:      #e37054;
-      --orange-dark: #c85e41;
-      --bg:          #eef3f8;
-      --ink:         #0f1f2e;
-      --muted:       #425568;
-      --card:        #ffffff;
-      --rule:        #dde6ef;
+      --orange: #ee6b2d;
+      --bg:     #0b0f14;
+      --panel:  #141b22;
+      --line:   #222d38;
+      --muted:  #9fb0c0;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
-      height: 100%;
+      min-height: 100%;
       background: var(--bg);
-      color: var(--ink);
+      color: #fff;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
       -webkit-text-size-adjust: 100%;
       overflow-x: hidden;
     }
 
-    /* ── HEADER ── */
-    .header {
-      background: var(--navy);
-      padding-top: max(env(safe-area-inset-top), 32px);
-      padding-bottom: 20px;
-      padding-left: 20px;
-      padding-right: 20px;
-      text-align: center;
-    }
-    .header-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: rgba(255,255,255,0.13);
-      border-radius: 20px;
-      padding: 5px 13px;
-      margin-top: 12px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.85);
-      font-weight: 500;
-    }
-    .header-badge i { font-size: 13px; }
-
-    /* ── CONTENT ── */
-    .content {
+    .app {
       max-width: 480px;
       margin: 0 auto;
-      padding: 22px 16px calc(22px + env(safe-area-inset-bottom, 0px));
-    }
-    .section-label {
-      font-size: 10.5px;
-      font-weight: 600;
-      letter-spacing: 0.09em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-bottom: 11px;
+      padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
     }
 
-    /* ── TILES ── */
-    .tile-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
+    /* ── SHARED ── */
+    .ic { flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--orange); }
+    .ic svg { width: 100%; height: 100%; }
+    .chev {
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.78); width: 17px; height: 17px; margin-left: auto;
     }
-    .tile {
-      background: var(--card);
-      border-radius: 18px;
-      border: 0.5px solid var(--rule);
-      padding: 18px 15px 16px;
-      text-decoration: none;
+    .chev svg { width: 100%; height: 100%; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 248px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 11px;
-      min-height: 120px;
+      padding: max(env(safe-area-inset-top), 17px) 18px 16px;
+      overflow: hidden;
+      background-color: var(--bg);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background-image: var(--heroimg);
+      background-size: cover; background-position: center 30%;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        linear-gradient(102deg, rgba(8,11,15,.95), rgba(8,11,15,.62) 38%, rgba(8,11,15,.2) 64%, rgba(8,11,15,.5)),
+        linear-gradient(180deg, rgba(8,11,15,0) 54%, rgba(11,15,20,1) 100%);
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .logo { height: 24px; width: auto; margin-bottom: auto; }
+    .h1 {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 900; font-size: 40px; line-height: .9;
+      letter-spacing: -.02em; color: #fff; text-transform: uppercase;
+      margin-top: 52px;
+    }
+    .sub {
+      margin-top: 12px; align-self: flex-start;
+      color: var(--muted); font-size: 12.5px;
+      display: inline-flex; gap: 7px; align-items: center;
+      background: rgba(255,255,255,.08); padding: 7px 13px; border-radius: 20px;
+    }
+    .sub svg { width: 14px; height: 14px; }
+    .sub b { color: #fff; font-weight: 600; }
+
+    /* ── STACKED PHOTO BANDS ── */
+    .bands { padding: 13px 14px 4px; display: flex; flex-direction: column; gap: 10px; }
+    .band {
+      position: relative; height: 74px; border-radius: 14px; overflow: hidden;
+      display: flex; align-items: center; gap: 13px; padding: 0 15px;
+      text-decoration: none; border: 1px solid var(--line);
+      background-color: var(--panel);
+      -webkit-tap-highlight-color: transparent;
       transition: transform 0.12s ease;
-      -webkit-tap-highlight-color: transparent;
-      cursor: pointer;
     }
-    .tile:active { transform: scale(0.96); }
-    .tile-icon {
-      width: 44px; height: 44px;
-      border-radius: 13px;
-      background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
+    .band:active { transform: scale(0.985); }
+    .band::before {
+      content: ""; position: absolute; inset: 0;
+      background-image: var(--i);
+      background-size: cover; background-position: center var(--py, 50%);
     }
-    .tile-icon i { font-size: 22px; color: var(--navy); }
-    .tile-label { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.3; flex: 1; }
-    .tile-arrow { font-size: 15px; color: var(--muted); opacity: 0.6; }
+    .band::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(8,11,15,.95), rgba(8,11,15,.84) 40%, rgba(8,11,15,.32) 76%, rgba(8,11,15,.1));
+    }
+    .band > * { position: relative; z-index: 1; }
+    .band .ic { width: 26px; height: 26px; }
+    .band .nm {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 800; font-size: 16.5px; color: #fff;
+      text-transform: uppercase; letter-spacing: .01em;
+    }
 
-    /* ── GIVE BUTTON ── */
-    .give-btn {
-      display: flex; align-items: center; gap: 10px;
-      width: 100%;
-      background: var(--orange); color: #fff;
-      text-decoration: none;
-      border-radius: 18px;
-      padding: 18px 20px;
-      font-size: 15px; font-weight: 600;
-      margin-bottom: 10px;
-      transition: transform 0.12s ease, background 0.12s ease;
-      -webkit-tap-highlight-color: transparent;
+    /* ── DISCOVER FOOTER ── */
+    .disc {
+      position: relative; margin: 12px 14px 0; min-height: 140px;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 19px 18px; overflow: hidden; border-radius: 14px;
+      border: 1px solid var(--line); background-color: var(--panel);
     }
-    .give-btn:active { transform: scale(0.97); background: var(--orange-dark); }
-    .give-btn i { font-size: 20px; }
+    .disc::before {
+      content: ""; position: absolute; inset: 0;
+      background-image: var(--d);
+      background-size: cover; background-position: center 26%;
+    }
+    .disc::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(8,11,15,.95) 6%, rgba(8,11,15,.58) 58%, rgba(8,11,15,.3));
+    }
+    .disc > * { position: relative; z-index: 1; }
+    .disc-h {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 900; font-size: 19px; line-height: 1; color: #fff;
+      text-transform: uppercase; letter-spacing: -.01em;
+    }
+    .disc-r { width: 36px; height: 3px; background: var(--orange); margin: 9px 0; border-radius: 2px; }
+    .disc-p { font-size: 11.5px; color: var(--muted); line-height: 1.4; max-width: 210px; }
 
-    /* ── LOCATION CARD ── */
-    .location-card {
-      display: flex; align-items: center; gap: 13px;
-      background: var(--card);
-      border-radius: 18px; border: 0.5px solid var(--rule);
-      padding: 14px 16px;
-      text-decoration: none;
-      transition: transform 0.12s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .location-card:active { transform: scale(0.98); }
-    .location-icon {
-      width: 42px; height: 42px;
-      border-radius: 13px; background: var(--bg);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .location-icon i { font-size: 20px; color: var(--navy); }
-    .location-info { flex: 1; }
-    .location-name { font-size: 13px; font-weight: 600; color: var(--ink); }
-    .location-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .location-card > i { font-size: 16px; color: var(--muted); opacity: 0.5; }
-
-    /* ── INSTALL HINT ── */
+    /* ── INSTALL (PWA) ── */
+    .install-wrap { padding: 14px; }
     .install-hint {
       display: none; align-items: center; gap: 8px;
-      background: var(--card); border-radius: 14px;
-      border: 0.5px solid var(--rule);
-      padding: 11px 14px; margin-top: 10px;
-      font-size: 12px; color: var(--muted);
+      background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+      padding: 11px 13px; font-size: 12px; color: var(--muted);
     }
-    .install-hint i { font-size: 16px; color: var(--navy); flex-shrink: 0; }
-    .close-hint { margin-left: auto; font-size: 16px; cursor: pointer; opacity: 0.5; }
-
-    /* ── IN-APP BROWSER ── */
-    .browser-overlay {
-      display: none;
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: #fff;
-      z-index: 999;
-      flex-direction: column;
-    }
-    .browser-overlay.open { display: flex; }
-
-    .browser-bar {
-      background: var(--navy);
-      display: flex; align-items: center; gap: 12px;
-      padding: 10px 16px;
-      padding-top: max(env(safe-area-inset-top), 10px);
-      flex-shrink: 0;
-    }
-    .browser-back {
-      display: flex; align-items: center; gap: 4px;
-      color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 500;
-      background: none; border: none; cursor: pointer; padding: 6px 0;
+    .install-hint svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--orange); }
+    .install-hint b { color: #fff; font-weight: 600; }
+    .install-hint .x { margin-left: auto; cursor: pointer; opacity: 0.6; font-size: 16px; line-height: 1; }
+    .install-btn {
+      display: none; align-items: center; justify-content: center; gap: 9px;
+      width: 100%; background: var(--panel); border: 1px solid var(--line);
+      border-radius: 12px; padding: 13px; color: #fff;
+      font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: .03em; cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
-    .browser-back i { font-size: 18px; }
-    .browser-title {
-      flex: 1; font-size: 13px; font-weight: 600;
-      color: #fff; text-align: center;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .browser-external {
-      display: flex; align-items: center;
-      color: rgba(255,255,255,0.75); font-size: 14px;
-      background: none; border: none; cursor: pointer; padding: 6px 0;
-      text-decoration: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .browser-external i { font-size: 18px; }
-
-    .browser-loading {
-      flex: 1; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 12px; color: var(--muted); font-size: 14px;
-    }
-    .spinner {
-      width: 28px; height: 28px;
-      border: 2.5px solid var(--rule);
-      border-top-color: var(--navy);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .browser-iframe {
-      flex: 1; border: none; width: 100%;
-      display: none;
-    }
-
-    .browser-blocked {
-      flex: 1; display: none;
-      flex-direction: column; align-items: center; justify-content: center;
-      padding: 40px 24px; gap: 14px; text-align: center;
-    }
-    .browser-blocked i { font-size: 36px; color: var(--muted); opacity: 0.4; }
-    .browser-blocked p { font-size: 14px; color: var(--muted); line-height: 1.5; }
-    .open-external-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--navy); color: #fff;
-      border: none; border-radius: 12px;
-      padding: 12px 20px; font-size: 14px; font-weight: 600;
-      cursor: pointer; text-decoration: none; margin-top: 4px;
-      -webkit-tap-highlight-color: transparent;
-    }
+    .install-btn svg { width: 17px; height: 17px; color: var(--orange); }
   </style>
 </head>
 <body>
 
 <!-- ═══════════════════════════════════════════════
-     ✏️  EDIT HERE — update links, text, times, etc.
-     ═══════════════════════════════════════════════ -->
-<!-- ═══════════════════════════════════════════════
      Content lives in content.json (edited via /admin).
-     Do not hard-code text or links here.
+     Photos live in /photos. Do not hard-code text or
+     links here — edit content.json instead.
      ═══════════════════════════════════════════════ -->
 
+<div class="app">
 
-<!-- HEADER -->
-<header class="header">
-  <img src="logos/logo-horizontal-white.png"
-       alt="Purpose Church"
-       style="height:52px; width:auto; display:block; margin:0 auto;">
-  <div class="header-badge">
-    <i class="ti ti-clock"></i>
-    <span id="js-times"></span>
-  </div>
-</header>
+  <header class="hero" id="js-hero">
+    <img class="logo" src="logos/logo-horizontal-white.png" alt="Purpose Church">
+    <h1 class="h1" id="js-headline"></h1>
+    <span class="sub" id="js-times" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <b id="js-times-text"></b>
+    </span>
+  </header>
 
-<!-- MAIN CONTENT -->
-<main class="content">
-  <p class="section-label">Quick links</p>
-  <div class="tile-grid" id="js-tiles"></div>
+  <nav class="bands" id="js-bands"></nav>
 
-  <a class="give-btn" id="js-give" href="#" target="_blank" rel="noopener">
-    <i class="ti ti-heart"></i>
-    Give online
-    <span style="flex:1"></span>
-    <i class="ti ti-arrow-right" style="font-size:15px; opacity:0.75;"></i>
-  </a>
+  <section class="disc" id="js-disc">
+    <h2 class="disc-h" id="js-disc-h"></h2>
+    <div class="disc-r"></div>
+    <p class="disc-p" id="js-disc-p"></p>
+  </section>
 
-  <a class="location-card" id="js-location" href="#" target="_blank" rel="noopener">
-    <div class="location-icon"><i class="ti ti-map-pin"></i></div>
-    <div class="location-info">
-      <div class="location-name" id="js-loc-name"></div>
-      <div class="location-detail" id="js-loc-detail"></div>
+  <div class="install-wrap">
+    <div class="install-hint" id="js-install-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 20h16"/></svg>
+      <span>Tap <b>Share</b>, then <b>Add to Home Screen</b> for the full app.</span>
+      <span class="x" id="js-close-hint">&times;</span>
     </div>
-    <i class="ti ti-chevron-right"></i>
-  </a>
-
-  <div class="install-hint" id="js-install-hint">
-    <i class="ti ti-share"></i>
-    <span>Tap <strong>Share</strong> then <strong>Add to Home Screen</strong> for the full app experience.</span>
-    <i class="ti ti-x close-hint" id="js-close-hint"></i>
-  </div>
-
-  <button class="give-btn install-btn" id="js-install-btn" type="button" style="display:none; border:none; cursor:pointer; background:var(--navy); margin-top:10px;">
-    <i class="ti ti-download"></i>
-    Install app
-    <span style="flex:1"></span>
-    <i class="ti ti-arrow-right" style="font-size:15px; opacity:0.75;"></i>
-  </button>
-</main>
-
-
-<!-- IN-APP BROWSER OVERLAY -->
-<div class="browser-overlay" id="js-browser-overlay">
-  <div class="browser-bar">
-    <button class="browser-back" onclick="closeBrowser()">
-      <i class="ti ti-chevron-left"></i> Back
+    <button class="install-btn" id="js-install-btn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12"/><path d="M8 12l4 4 4-4"/><path d="M4 20h16"/></svg>
+      Install app
     </button>
-    <div class="browser-title" id="js-browser-title"></div>
-    <a class="browser-external" id="js-browser-external" href="#" target="_blank" rel="noopener"
-       title="Open in browser">
-      <i class="ti ti-external-link"></i>
-    </a>
   </div>
 
-  <div class="browser-loading" id="js-browser-loading">
-    <div class="spinner"></div>
-    <span>Loading…</span>
-  </div>
-
-  <iframe class="browser-iframe" id="js-browser-iframe"
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-          title="In-app browser"></iframe>
-
-  <div class="browser-blocked" id="js-browser-blocked">
-    <i class="ti ti-lock"></i>
-    <p>This page needs to open in your browser.</p>
-    <a class="open-external-btn" id="js-browser-open-btn" href="#" target="_blank" rel="noopener">
-      <i class="ti ti-external-link"></i> Open page
-    </a>
-  </div>
 </div>
 
 
 <script>
-// ── Load + render content from content.json ─────
-// Content is edited via the /admin panel, which writes content.json.
+// ── Inline SVG icon set (replaces the Tabler webfont) ──────────────
+// 24×24, stroke=currentColor so .ic{color:var(--orange)} tints them.
+var ICONS = {
+  user:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 21v-1a6 6 0 0 1 12 0v1"/></svg>',
+  file:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>',
+  users:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><path d="M16 4.8a3.5 3.5 0 0 1 0 6.4"/><path d="M17.5 15c2.2.5 3.5 2 3.5 5"/></svg>',
+  sparkle:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg>',
+  gift:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M12 8S11 3 8.5 3a2.5 2.5 0 0 0 0 5z"/><path d="M12 8s1-5 3.5-5a2.5 2.5 0 0 1 0 5z"/></svg>',
+  pin:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+  heart:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>',
+  calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="8" y1="3" x2="8" y2="6"/><line x1="16" y1="3" x2="16" y2="6"/></svg>',
+  book:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4a2 2 0 0 1 2-2h11v16H7a2 2 0 0 0-2 2z"/><path d="M5 20a2 2 0 0 1 2-2h11"/></svg>',
+  music:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="18" r="2.5"/><circle cx="17" cy="16" r="2.5"/><path d="M9.5 18V6l10-2v12"/></svg>',
+  hands:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M11 5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M14 6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-5.2-3l-1.8-3.1a1.6 1.6 0 0 1 2.7-1.7L8 14"/></svg>',
+  chevron:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>'
+};
+
+// ── Hardcoded fallback so a failed content.json fetch never blanks the screen ──
+var FALLBACK = {
+  hero: {
+    image: "photos/hero.jpg",
+    headline: "Take Your Next Step",
+    serviceTimes: "Sundays 9 & 10:30am"
+  },
+  tiles: [
+    { icon: "user",    label: "I'm New",             url: "https://purposearizona.com/connectcard", image: "photos/tile-new.jpg" },
+    { icon: "file",    label: "Message Notes",       url: "https://purposearizona.com/notes",       image: "photos/tile-notes.jpg" },
+    { icon: "users",   label: "Join the Dream Team", url: "https://purposearizona.com/serve",       image: "photos/tile-serve.jpg" },
+    { icon: "sparkle", label: "Spiritual Gifts",     url: "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b", image: "photos/tile-gifts.jpg" },
+    { icon: "gift",    label: "Give",                url: "https://purpose.mywell.org",             image: "photos/tile-give.jpg" },
+    { icon: "pin",     label: "Plan a Visit",        url: "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338", image: "photos/tile-visit.jpg" }
+  ],
+  discover: {
+    heading: "Discover Your Purpose",
+    body: "We believe you were made on purpose, for a purpose. Come find yours with us.",
+    image: "photos/discover.jpg"
+  }
+};
+
+// ── Render ─────────────────────────────────────────
+function bgVar(value) { return "url('" + String(value).replace(/'/g, "%27") + "')"; }
+
+function makeBand(tile) {
+  var a = document.createElement('a');
+  a.className = 'band';
+  a.href = tile.url || '#';
+  a.target = '_blank';
+  a.rel = 'noopener';
+  if (tile.image) a.style.setProperty('--i', bgVar(tile.image));
+  if (tile.py)    a.style.setProperty('--py', tile.py);
+
+  var ic = document.createElement('span');
+  ic.className = 'ic';
+  ic.innerHTML = ICONS[tile.icon] || ICONS.pin;
+
+  var nm = document.createElement('span');
+  nm.className = 'nm';
+  nm.textContent = tile.label || tile.title || '';
+
+  var ch = document.createElement('span');
+  ch.className = 'chev';
+  ch.innerHTML = ICONS.chevron;
+
+  a.appendChild(ic);
+  a.appendChild(nm);
+  a.appendChild(ch);
+  return a;
+}
+
+function render(data) {
+  data = data || FALLBACK;
+
+  // Hero
+  var hero = document.getElementById('js-hero');
+  if (data.hero && data.hero.image) hero.style.setProperty('--heroimg', bgVar(data.hero.image));
+  document.getElementById('js-headline').textContent = (data.hero && data.hero.headline) || '';
+
+  var times = (data.hero && data.hero.serviceTimes) || data.times || '';
+  var pill = document.getElementById('js-times');
+  if (times) {
+    document.getElementById('js-times-text').textContent = times;
+    pill.style.display = 'inline-flex';
+  } else {
+    pill.style.display = 'none';
+  }
+
+  // Bands
+  var bands = document.getElementById('js-bands');
+  bands.textContent = '';
+  (data.tiles || []).forEach(function (t) { bands.appendChild(makeBand(t)); });
+
+  // Discover footer
+  var disc = data.discover || {};
+  if (disc.image) document.getElementById('js-disc').style.setProperty('--d', bgVar(disc.image));
+  document.getElementById('js-disc-h').textContent = disc.heading || '';
+  document.getElementById('js-disc-p').textContent = disc.body || '';
+}
+
 // Cache-bust so edits show up promptly even with the service worker.
 fetch('content.json?v=' + Date.now())
-  .then(function(res) { return res.json(); })
-  .then(renderContent)
-  .catch(function() {
-    // Offline / fetch failed — fall back to whatever the SW cached.
-    fetch('content.json').then(function(res) { return res.json(); }).then(renderContent);
-  });
+  .then(function (res) {
+    if (!res.ok) throw new Error('content fetch failed');
+    return res.json();
+  })
+  .then(render)
+  .catch(function () { render(FALLBACK); });
 
-function renderContent(CONFIG) {
-  document.getElementById('js-times').textContent      = CONFIG.times;
-  document.getElementById('js-give').href              = CONFIG.giveUrl;
-  document.getElementById('js-location').href          = CONFIG.location.mapsUrl;
-  document.getElementById('js-loc-name').textContent   = CONFIG.location.name;
-  document.getElementById('js-loc-detail').textContent = CONFIG.times + ' · ' + CONFIG.location.address;
-
-  // ── Build tiles ─────────────────────────────────
-  var grid = document.getElementById('js-tiles');
-  grid.innerHTML = '';
-  CONFIG.tiles.forEach(function(tile) {
-    var a = document.createElement('a');
-    a.className = 'tile';
-    a.href = tile.url;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.innerHTML =
-      '<div class="tile-icon"><i class="ti ' + tile.icon + '"></i></div>' +
-      '<span class="tile-label">' + tile.title + '</span>' +
-      '<i class="ti ti-arrow-right tile-arrow"></i>';
-    grid.appendChild(a);
-  });
-}
-
-// ── In-app browser ──────────────────────────────
-var currentUrl = '';
-
-function openBrowser(url, title) {
-  currentUrl = url;
-  var overlay   = document.getElementById('js-browser-overlay');
-  var iframe    = document.getElementById('js-browser-iframe');
-  var loading   = document.getElementById('js-browser-loading');
-  var blocked   = document.getElementById('js-browser-blocked');
-  var titleEl   = document.getElementById('js-browser-title');
-  var extLink   = document.getElementById('js-browser-external');
-  var openBtn   = document.getElementById('js-browser-open-btn');
-
-  // Reset state
-  iframe.style.display  = 'none';
-  loading.style.display = 'flex';
-  blocked.style.display = 'none';
-  titleEl.textContent   = title;
-  extLink.href          = url;
-  openBtn.href          = url;
-
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-
-  // Load iframe
-  iframe.src = '';
-  setTimeout(function() { iframe.src = url; }, 50);
-
-  // On load: hide spinner, show iframe
-  iframe.onload = function() {
-    loading.style.display = 'none';
-    iframe.style.display  = 'block';
-  };
-
-  // On error (X-Frame-Options blocked): show fallback
-  iframe.onerror = function() {
-    loading.style.display = 'none';
-    blocked.style.display = 'flex';
-  };
-
-  // Fallback timeout — if no load event after 8s, show blocked UI
-  var loadTimer = setTimeout(function() {
-    if (loading.style.display !== 'none') {
-      loading.style.display = 'none';
-      blocked.style.display = 'flex';
-    }
-  }, 8000);
-
-  iframe.onload = function() {
-    clearTimeout(loadTimer);
-    loading.style.display = 'none';
-    iframe.style.display  = 'block';
-  };
-}
-
-function closeBrowser() {
-  var overlay = document.getElementById('js-browser-overlay');
-  var iframe  = document.getElementById('js-browser-iframe');
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
-  setTimeout(function() { iframe.src = ''; }, 200);
-}
-
-// Back gesture on Android (hardware back button)
-window.addEventListener('popstate', function() {
-  var overlay = document.getElementById('js-browser-overlay');
-  if (overlay.classList.contains('open')) {
-    closeBrowser();
-  }
-});
-document.getElementById('js-browser-overlay').addEventListener('transitionend', function() {});
-
-// ── iOS install hint ────────────────────────────
+// ── iOS install hint ───────────────────────────────
 var isIOS     = /iphone|ipad|ipod/i.test(navigator.userAgent);
 var inApp     = window.navigator.standalone === true;
 var dismissed = sessionStorage.getItem('hint-dismissed');
 if (isIOS && !inApp && !dismissed) {
   document.getElementById('js-install-hint').style.display = 'flex';
 }
-document.getElementById('js-close-hint').addEventListener('click', function() {
+document.getElementById('js-close-hint').addEventListener('click', function () {
   document.getElementById('js-install-hint').style.display = 'none';
   sessionStorage.setItem('hint-dismissed', '1');
 });
 
-// ── Android / Chrome install prompt ─────────────
-// Browsers fire 'beforeinstallprompt' when the app is installable.
-// We capture it and show our own "Install app" button instead.
+// ── Android / Chrome install prompt ────────────────
 var deferredPrompt = null;
 var installBtn     = document.getElementById('js-install-btn');
 
-window.addEventListener('beforeinstallprompt', function(e) {
-  e.preventDefault();              // stop the default mini-infobar
+window.addEventListener('beforeinstallprompt', function (e) {
+  e.preventDefault();
   deferredPrompt = e;
   installBtn.style.display = 'flex';
 });
-
-installBtn.addEventListener('click', function() {
+installBtn.addEventListener('click', function () {
   if (!deferredPrompt) return;
   deferredPrompt.prompt();
-  deferredPrompt.userChoice.finally(function() {
+  deferredPrompt.userChoice.finally(function () {
     deferredPrompt = null;
     installBtn.style.display = 'none';
   });
 });
-
-// Hide the button once installed
-window.addEventListener('appinstalled', function() {
+window.addEventListener('appinstalled', function () {
   installBtn.style.display = 'none';
 });
 
-// ── Service Worker ──────────────────────────────
+// ── Service Worker ─────────────────────────────────
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('sw.js').catch(function() {});
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () {});
   });
 }
 </script>
