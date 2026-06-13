@@ -33,19 +33,19 @@
       "label": "Give",
       "icon": "gift",
       "url": "https://purpose.mywell.org",
-      "image": "photos/tile-give.jpg"
+      "image": "/photos/19755.jpg"
     },
     {
       "label": "Plan a Visit",
       "icon": "pin",
       "url": "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338",
-      "image": "photos/tile-visit.jpg"
+      "image": "/photos/19742.jpg"
     }
   ],
   "discover": {
     "heading": "Discover Your Purpose",
     "body": "We believe you were made on purpose, for a purpose. Come find yours with us.",
-    "image": "photos/discover.jpg"
+    "image": "/photos/19752.jpg"
   },
   "times": "Sundays 9 & 10:30am",
   "location": {
