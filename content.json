@@ -1,57 +1,57 @@
 {
+  "hero": {
+    "image": "/photos/19747.jpg",
+    "headline": "Take Your Next Step",
+    "serviceTimes": "Sundays 9 & 10:30am"
+  },
+  "tiles": [
+    {
+      "label": "I'm New",
+      "icon": "user",
+      "url": "https://purposearizona.com/connectcard",
+      "image": "/photos/19735.jpg"
+    },
+    {
+      "label": "Message Notes",
+      "icon": "file",
+      "url": "https://purposearizona.com/notes",
+      "image": "/photos/19751.jpg"
+    },
+    {
+      "label": "Join the Dream Team",
+      "icon": "users",
+      "url": "https://purposearizona.com/serve",
+      "image": "/photos/19745.jpg"
+    },
+    {
+      "label": "Spiritual Gifts",
+      "icon": "sparkle",
+      "url": "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b",
+      "image": "/photos/19740.jpg"
+    },
+    {
+      "label": "Give",
+      "icon": "gift",
+      "url": "https://purpose.mywell.org",
+      "image": "/photos/19755.jpg"
+    },
+    {
+      "label": "Plan a Visit",
+      "icon": "pin",
+      "url": "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338",
+      "image": "/photos/19742.jpg"
+    }
+  ],
+  "discover": {
+    "heading": "Discover Your Purpose",
+    "body": "We believe you were made on purpose, for a purpose. Come find yours with us.",
+    "image": "/photos/19752.jpg"
+  },
   "times": "Sundays 9 & 10:30am",
   "location": {
     "name": "Desert Edge High School",
     "address": "15778 W Yuma Rd · Goodyear, AZ",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338"
   },
-  "giveUrl": "https://purpose.mywell.org",
-  "hero": {
-    "image": "photos/hero.jpg",
-    "headline": "Take Your Next Step",
-    "serviceTimes": "Sundays 9 & 10:30am"
-  },
-  "tiles": [
-    {
-      "icon": "user",
-      "label": "I'm New",
-      "url": "https://purposearizona.com/connectcard",
-      "image": "photos/tile-new.jpg"
-    },
-    {
-      "icon": "file",
-      "label": "Message Notes",
-      "url": "https://purposearizona.com/notes",
-      "image": "photos/tile-notes.jpg"
-    },
-    {
-      "icon": "users",
-      "label": "Join the Dream Team",
-      "url": "https://purposearizona.com/serve",
-      "image": "photos/tile-serve.jpg"
-    },
-    {
-      "icon": "sparkle",
-      "label": "Spiritual Gifts",
-      "url": "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b",
-      "image": "photos/tile-gifts.jpg"
-    },
-    {
-      "icon": "gift",
-      "label": "Give",
-      "url": "https://purpose.mywell.org",
-      "image": "photos/tile-give.jpg"
-    },
-    {
-      "icon": "pin",
-      "label": "Plan a Visit",
-      "url": "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338",
-      "image": "photos/tile-visit.jpg"
-    }
-  ],
-  "discover": {
-    "heading": "Discover Your Purpose",
-    "body": "We believe you were made on purpose, for a purpose. Come find yours with us.",
-    "image": "photos/discover.jpg"
-  }
+  "giveUrl": "https://purpose.mywell.org"
 }
