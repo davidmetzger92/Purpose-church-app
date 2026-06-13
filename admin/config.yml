@@ -31,7 +31,10 @@ collections:
             name: hero
             widget: object
             fields:
-              - { label: "Background Photo", name: image, widget: image }
+              - label: "Background Photo"
+                name: image
+                widget: image
+                hint: "Landscape photo, at least ~1600×950px. The left side is darkened for the logo + headline."
               - label: "Image Focus"
                 name: focus
                 widget: select
@@ -82,7 +85,10 @@ collections:
                 name: url
                 widget: string
                 hint: "Where the band goes. Opens in the browser."
-              - { label: "Background Photo", name: image, widget: image }
+              - label: "Background Photo"
+                name: image
+                widget: image
+                hint: "Wide letterbox band. For a perfect fit, crop to about 1600×250px (~6.5:1). Otherwise use Image Focus below to pick which slice shows."
               - label: "Image Focus"
                 name: focus
                 widget: select
@@ -103,7 +109,10 @@ collections:
             fields:
               - { label: "Heading", name: heading, widget: string }
               - { label: "Body Text", name: body, widget: text }
-              - { label: "Background Photo", name: image, widget: image }
+              - label: "Background Photo"
+                name: image
+                widget: image
+                hint: "Wide banner. For a perfect fit, crop to about 1600×460px (~3.5:1)."
               - label: "Image Focus"
                 name: focus
                 widget: select
