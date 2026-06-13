@@ -2,136 +2,130 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="noindex">
   <title>Editing the Purpose App — Staff Guide</title>
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --navy:        #174a74;
-      --navy-dark:   #123a5c;
-      --orange:      #e37054;
-      --orange-dark: #c85e41;
-      --bg:          #eef3f8;
-      --ink:         #0f1f2e;
-      --muted:       #425568;
-      --card:        #ffffff;
-      --rule:        #dde6ef;
+      --orange: #ee6b2d; --orange-dark:#c85a22;
+      --bg:#0b0f14; --panel:#141b22; --panel2:#1a232c; --line:#222d38; --muted:#9fb0c0;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      background: var(--bg);
-      color: var(--ink);
+      background: var(--bg); color: #fff;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.55;
+      -webkit-font-smoothing: antialiased; line-height: 1.55;
     }
+    svg { display: block; }
 
-    /* ── HEADER ── */
+    /* ── HERO ── */
     .hero {
-      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
-      padding: 40px 20px 56px;
-      text-align: center;
-      color: #fff;
+      position: relative; overflow: hidden;
+      background: radial-gradient(120% 90% at 80% 0%, rgba(238,107,45,.16), transparent 55%),
+                  linear-gradient(170deg, #11161d, #0b0f14);
+      padding: 40px 20px 54px; text-align: center;
     }
-    .hero img { height: 46px; width: auto; margin-bottom: 22px; }
-    .hero h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.01em; }
-    .hero p { font-size: 14.5px; color: rgba(255,255,255,0.82); margin-top: 8px; max-width: 30ch; margin-left:auto; margin-right:auto; }
+    .hero img { height: 40px; width: auto; margin: 0 auto 20px; }
+    .hero h1 { font-family:'Archivo',sans-serif; font-weight:900; font-size:30px; text-transform:uppercase; letter-spacing:-.01em; }
+    .hero p { font-size: 14px; color: var(--muted); margin-top: 8px; max-width: 32ch; margin-inline: auto; }
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.13); border-radius: 20px;
-      padding: 6px 14px; margin-top: 18px; font-size: 12.5px; font-weight: 500;
-      color: rgba(255,255,255,0.9);
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.08); border-radius: 20px;
+      padding: 7px 14px; margin-top: 18px; font-size: 12.5px; color: var(--muted);
     }
+    .hero-badge svg { width: 14px; height: 14px; color: var(--orange); }
 
     /* ── LAYOUT ── */
-    .wrap { max-width: 640px; margin: -34px auto 0; padding: 0 16px 60px; }
-
+    .wrap { max-width: 640px; margin: -30px auto 0; padding: 0 16px 60px; }
     .card {
-      background: var(--card); border-radius: 20px;
-      border: 0.5px solid var(--rule);
-      box-shadow: 0 8px 30px rgba(23,74,116,0.06);
-      padding: 26px 22px; margin-bottom: 16px;
+      background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+      padding: 24px 20px; margin-bottom: 14px;
     }
     .eyebrow {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--orange-dark);
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family:'Archivo',sans-serif; font-size: 11px; font-weight: 800;
+      letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange);
       margin-bottom: 14px;
     }
-    .eyebrow i { font-size: 15px; }
-    h2 { font-size: 19px; font-weight: 700; margin-bottom: 4px; }
-    .sub { font-size: 13.5px; color: var(--muted); margin-bottom: 18px; }
+    .eyebrow svg { width: 15px; height: 15px; }
+    h2 { font-family:'Archivo',sans-serif; font-size: 19px; font-weight: 800; text-transform:uppercase; letter-spacing:-.01em; }
+    .sub { font-size: 13.5px; color: var(--muted); margin: 4px 0 16px; }
 
     /* ── STEPS ── */
-    .step { display: flex; gap: 14px; padding: 13px 0; border-top: 1px solid var(--rule); }
+    .step { display: flex; gap: 14px; padding: 13px 0; border-top: 1px solid var(--line); }
     .step:first-of-type { border-top: none; padding-top: 4px; }
     .step-num {
-      flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
-      background: var(--navy); color: #fff;
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: var(--orange); color: #fff;
       display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 700;
+      font-family:'Archivo',sans-serif; font-size: 13px; font-weight: 800;
     }
-    .step-body { flex: 1; padding-top: 3px; }
-    .step-body strong { font-weight: 600; }
+    .step-body { flex: 1; padding-top: 2px; font-size: 14px; }
     .step-body .note { font-size: 13px; color: var(--muted); margin-top: 3px; }
-    a { color: var(--navy); font-weight: 600; word-break: break-word; }
+    a { color: var(--orange); font-weight: 600; word-break: break-word; }
 
     /* ── FIELD LIST ── */
-    .field { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; border-top: 1px solid var(--rule); }
-    .field:first-child { border-top: none; padding-top: 2px; }
+    .field { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; border-top: 1px solid var(--line); }
+    .field:first-of-type { border-top: none; padding-top: 2px; }
     .field-icon {
       flex-shrink: 0; width: 38px; height: 38px; border-radius: 11px;
-      background: var(--bg); display: flex; align-items: center; justify-content: center;
+      background: var(--panel2); display: flex; align-items: center; justify-content: center;
     }
-    .field-icon i { font-size: 19px; color: var(--navy); }
-    .field-text { flex: 1; }
+    .field-icon svg { width: 19px; height: 19px; color: var(--orange); }
     .field-text b { font-size: 14px; font-weight: 600; }
     .field-text p { font-size: 13px; color: var(--muted); margin-top: 1px; }
 
     /* ── CALLOUTS ── */
     .tip {
       display: flex; gap: 11px; align-items: flex-start;
-      background: var(--bg); border-radius: 13px;
-      padding: 13px 14px; margin-top: 10px; font-size: 13.5px;
+      background: var(--panel2); border-radius: 12px;
+      padding: 13px 14px; margin-top: 10px; font-size: 13.5px; color: #e7edf3;
     }
     .tip:first-of-type { margin-top: 0; }
-    .tip i { font-size: 18px; color: var(--navy); flex-shrink: 0; margin-top: 1px; }
-    .tip.warn { background: #fdeee9; }
-    .tip.warn i { color: var(--orange-dark); }
+    .tip svg { width: 18px; height: 18px; color: var(--orange); flex-shrink: 0; margin-top: 1px; }
 
+    /* ── CTA ── */
     .cta {
       display: flex; align-items: center; justify-content: center; gap: 9px;
       background: var(--orange); color: #fff; text-decoration: none;
-      border-radius: 14px; padding: 16px; font-size: 15px; font-weight: 600;
-      margin-top: 4px; transition: background 0.15s ease;
+      border-radius: 12px; padding: 15px;
+      font-family:'Archivo',sans-serif; font-weight: 800; font-size: 14px;
+      text-transform: uppercase; letter-spacing: .03em;
+      margin-top: 6px; transition: background 0.15s ease;
     }
     .cta:hover { background: var(--orange-dark); color: #fff; }
-    .cta i { font-size: 19px; }
+    .cta.secondary { background: var(--panel2); border: 1px solid var(--line); color: #fff; margin-top: 10px; }
+    .cta svg { width: 18px; height: 18px; }
 
-    .footer { text-align: center; font-size: 12.5px; color: var(--muted); padding: 8px 0 0; }
-    .footer strong { color: var(--ink); }
+    .footer { text-align: center; font-size: 12.5px; color: var(--muted); padding: 10px 0 0; }
+    .footer b { color: #fff; }
   </style>
 </head>
 <body>
 
   <header class="hero">
-    <img src="logos/logo-horizontal-white.png" alt="Purpose Church">
+    <img src="logos/logo-horizontal-white.png" alt="Purpose Church" width="145" height="40">
     <h1>Editing the App</h1>
-    <p>A quick guide to updating buttons, links, and service times.</p>
-    <div class="hero-badge"><i class="ti ti-clock"></i> Takes about a minute</div>
+    <p>How to update the photos, buttons, and text on the Purpose app.</p>
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      Takes about a minute
+    </div>
   </header>
 
   <main class="wrap">
 
     <!-- FIRST TIME -->
     <section class="card">
-      <span class="eyebrow"><i class="ti ti-rocket"></i> First time only · ~5 min</span>
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+        First time only · ~5 min
+      </span>
       <h2>Get set up</h2>
       <p class="sub">You only do these two things once.</p>
 
@@ -154,7 +148,10 @@
 
     <!-- MAKE A CHANGE -->
     <section class="card">
-      <span class="eyebrow"><i class="ti ti-pencil"></i> Every time</span>
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10-10-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>
+        Every time
+      </span>
       <h2>Make a change</h2>
       <p class="sub">Open the editor, change what you need, hit Save.</p>
 
@@ -182,55 +179,82 @@
       </div>
 
       <a class="cta" href="admin/" target="_blank" rel="noopener">
-        <i class="ti ti-edit"></i> Open the Editor
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10-10-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>
+        Open the Editor
       </a>
     </section>
 
     <!-- WHAT YOU CAN EDIT -->
     <section class="card">
-      <span class="eyebrow"><i class="ti ti-adjustments"></i> The fields</span>
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><circle cx="9" cy="8" r="2"/><line x1="4" y1="16" x2="20" y2="16"/><circle cx="15" cy="16" r="2"/></svg>
+        The fields
+      </span>
       <h2>What you can edit</h2>
       <p class="sub">Everything on the app's home screen, in one form.</p>
 
       <div class="field">
-        <div class="field-icon"><i class="ti ti-clock"></i></div>
-        <div class="field-text"><b>Service Times</b><p>The times shown at the top of the app.</p></div>
+        <div class="field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 14l5-4 4 3 3-2 6 4"/><circle cx="9" cy="9" r="1.5"/></svg></div>
+        <div class="field-text"><b>Hero</b><p>The big photo at the top — headline (e.g. "Take Your Next Step"), service times, and the background photo.</p></div>
       </div>
       <div class="field">
-        <div class="field-icon"><i class="ti ti-map-pin"></i></div>
-        <div class="field-text"><b>Location</b><p>Place name, address, and the map link.</p></div>
+        <div class="field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="4" rx="1.5"/><rect x="3" y="11" width="18" height="4" rx="1.5"/><rect x="3" y="17" width="18" height="2.5" rx="1.25"/></svg></div>
+        <div class="field-text"><b>Buttons (photo bands)</b><p>The stacked photo links. Add, remove, reorder, or rename them. Each has a label, an icon (dropdown), a link, and its own background photo.</p></div>
       </div>
       <div class="field">
-        <div class="field-icon"><i class="ti ti-heart"></i></div>
-        <div class="field-text"><b>Give Link</b><p>Where the "Give online" button goes.</p></div>
+        <div class="field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="7" x2="19" y2="7"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="17" x2="13" y2="17"/></svg></div>
+        <div class="field-text"><b>Discover footer</b><p>The bottom photo band — heading, a short blurb, and the background photo.</p></div>
       </div>
-      <div class="field">
-        <div class="field-icon"><i class="ti ti-apps"></i></div>
-        <div class="field-text"><b>Quick-Link Buttons</b><p>Add, remove, reorder, or rename buttons. Each has a name, an icon (from a dropdown), and a link.</p></div>
+    </section>
+
+    <!-- PHOTOS -->
+    <section class="card">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12a3 3 0 0 0 3 3h12"/><path d="M3 6h12a3 3 0 0 1 3 3v12"/></svg>
+        Photos &amp; cropping
+      </span>
+      <h2>Make photos fit</h2>
+      <p class="sub">The bands are wide and short, so photos get cropped. Two easy ways to control it.</p>
+
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12a3 3 0 0 0 3 3h12"/><path d="M3 6h12a3 3 0 0 1 3 3v12"/></svg>
+        <div><b>Best:</b> use the <strong>Crop Helper</strong> below — drag a box over your photo and download a version that fits perfectly, then upload that.</div>
       </div>
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M7 10l5-5 5 5"/></svg>
+        <div><b>Quick:</b> after uploading, use the <strong>Image Focus</strong> dropdown (Top / Center / Bottom) to slide which part of the photo shows.</div>
+      </div>
+
+      <a class="cta secondary" href="crop.html" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12a3 3 0 0 0 3 3h12"/><path d="M3 6h12a3 3 0 0 1 3 3v12"/></svg>
+        Open the Crop Helper
+      </a>
     </section>
 
     <!-- GOOD TO KNOW -->
     <section class="card">
-      <span class="eyebrow"><i class="ti ti-bulb"></i> Good to know</span>
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 1 4 10.5c-.7.6-1 1-1 2H9c0-1-.3-1.4-1-2A6 6 0 0 1 12 3z"/></svg>
+        Good to know
+      </span>
       <h2>You can't break it</h2>
       <p class="sub">A few things that make this stress-free.</p>
 
       <div class="tip">
-        <i class="ti ti-shield-check"></i>
-        <div>You're only editing text and links — the design and layout are locked. Worst case is a typo; just fix it and Save again.</div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8 3.2-3.6"/></svg>
+        <div>You're only editing content — the design and layout are locked. Worst case is a typo; just fix it and Save again.</div>
       </div>
       <div class="tip">
-        <i class="ti ti-list-check"></i>
-        <div>Icons come from a dropdown, so you can't mistype them. To add a button, use <strong>+ Add</strong> under Quick-Link Buttons.</div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11"/><path d="M9 12h11"/><path d="M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></svg>
+        <div>To add a button, use <strong>+ Add</strong> under Buttons. Icons come from a dropdown, so you can't mistype them.</div>
       </div>
-      <div class="tip warn">
-        <i class="ti ti-help-circle"></i>
+      <div class="tip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.7"/><path d="M12 17h.01"/></svg>
         <div>Stuck or unsure? Don't force it — text David before changing anything you're not confident about.</div>
       </div>
     </section>
 
-    <p class="footer">Made for <strong>Purpose Church</strong> · Goodyear, AZ</p>
+    <p class="footer">Made for <b>Purpose Church</b> · Goodyear, AZ</p>
 
   </main>
 
