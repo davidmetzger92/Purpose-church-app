@@ -32,6 +32,18 @@ collections:
             widget: object
             fields:
               - { label: "Background Photo", name: image, widget: image }
+              - label: "Image Focus"
+                name: focus
+                widget: select
+                required: false
+                default: "35%"
+                hint: "Which part of the photo shows — move the crop up or down."
+                options:
+                  - { label: "Top", value: "0%" }
+                  - { label: "Upper", value: "25%" }
+                  - { label: "Center", value: "50%" }
+                  - { label: "Lower", value: "75%" }
+                  - { label: "Bottom", value: "100%" }
               - label: "Headline"
                 name: headline
                 widget: string
@@ -71,6 +83,18 @@ collections:
                 widget: string
                 hint: "Where the band goes. Opens in the browser."
               - { label: "Background Photo", name: image, widget: image }
+              - label: "Image Focus"
+                name: focus
+                widget: select
+                required: false
+                default: "50%"
+                hint: "Which part of the photo shows in the band — move the crop up or down."
+                options:
+                  - { label: "Top", value: "0%" }
+                  - { label: "Upper", value: "25%" }
+                  - { label: "Center", value: "50%" }
+                  - { label: "Lower", value: "75%" }
+                  - { label: "Bottom", value: "100%" }
 
           # ── DISCOVER FOOTER ──
           - label: "Discover Footer"
@@ -80,6 +104,18 @@ collections:
               - { label: "Heading", name: heading, widget: string }
               - { label: "Body Text", name: body, widget: text }
               - { label: "Background Photo", name: image, widget: image }
+              - label: "Image Focus"
+                name: focus
+                widget: select
+                required: false
+                default: "40%"
+                hint: "Which part of the photo shows — move the crop up or down."
+                options:
+                  - { label: "Top", value: "0%" }
+                  - { label: "Upper", value: "25%" }
+                  - { label: "Center", value: "50%" }
+                  - { label: "Lower", value: "75%" }
+                  - { label: "Bottom", value: "100%" }
 
           # ── LEGACY (kept so older revert points still work) ──
           - { label: "Service Times (legacy)", name: times, widget: string, required: false }
