@@ -75,7 +75,7 @@
         linear-gradient(180deg, rgba(8,11,15,0) 54%, rgba(11,15,20,1) 100%);
     }
     .hero > * { position: relative; z-index: 1; }
-    .logo { height: 24px; width: auto; margin-bottom: auto; }
+    .logo { height: 24px; width: auto; align-self: flex-start; margin-bottom: auto; }
     .h1 {
       font-family: 'Archivo', sans-serif;
       font-weight: 900; font-size: 40px; line-height: .9;
@@ -248,7 +248,13 @@ var FALLBACK = {
 };
 
 // ── Render ─────────────────────────────────────────
-function bgVar(value) { return "url('" + String(value).replace(/'/g, "%27") + "')"; }
+function bgVar(value) {
+  // The CMS may store image paths as root-absolute ("/photos/x.jpg"), which
+  // breaks under the GitHub Pages subfolder. Strip the leading slash so paths
+  // resolve relative to this page — works at a subfolder, root, or custom domain.
+  var v = String(value).replace(/^\//, '');
+  return "url('" + v.replace(/'/g, "%27") + "')";
+}
 
 function makeBand(tile) {
   var a = document.createElement('a');
