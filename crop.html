@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Purpose App — Photo Crop Helper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --orange:#ee6b2d; --bg:#0b0f14; --panel:#141b22; --panel2:#1a232c; --line:#222d38; --muted:#9fb0c0; }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      background:var(--bg); color:#fff;
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      -webkit-font-smoothing:antialiased; line-height:1.5;
+      padding:0 0 60px;
+    }
+    .wrap { max-width:640px; margin:0 auto; padding:0 16px; }
+
+    header { text-align:center; padding:28px 16px 18px; }
+    header h1 {
+      font-family:'Archivo',sans-serif; font-weight:900; font-size:24px;
+      text-transform:uppercase; letter-spacing:-.01em;
+    }
+    header p { color:var(--muted); font-size:13px; margin-top:6px; }
+
+    .card {
+      background:var(--panel); border:1px solid var(--line); border-radius:16px;
+      padding:18px; margin-bottom:14px;
+    }
+    .step-label {
+      font-family:'Archivo',sans-serif; font-weight:800; font-size:11px;
+      letter-spacing:.07em; text-transform:uppercase; color:var(--orange);
+      margin-bottom:12px; display:flex; align-items:center; gap:7px;
+    }
+
+    /* slot picker */
+    .slots { display:flex; gap:8px; flex-wrap:wrap; }
+    .slot {
+      flex:1; min-width:90px; background:var(--panel2); border:1px solid var(--line);
+      border-radius:11px; padding:11px 10px; cursor:pointer; text-align:center;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .slot.active { border-color:var(--orange); background:rgba(238,107,45,.12); }
+    .slot b { display:block; font-family:'Archivo',sans-serif; font-weight:700; font-size:13px; text-transform:uppercase; }
+    .slot span { font-size:11px; color:var(--muted); }
+
+    /* drop zone */
+    .drop {
+      border:1.5px dashed var(--line); border-radius:13px; padding:26px 16px;
+      text-align:center; color:var(--muted); font-size:13.5px; cursor:pointer;
+      transition:border-color .15s, background .15s;
+    }
+    .drop.over { border-color:var(--orange); background:rgba(238,107,45,.07); }
+    .drop b { color:#fff; }
+    input[type=file] { display:none; }
+
+    /* stage */
+    .stage { position:relative; width:100%; touch-action:none; user-select:none; -webkit-user-select:none; }
+    canvas { width:100%; height:auto; display:block; border-radius:10px; background:#000; }
+    .hidden { display:none; }
+
+    .controls { margin-top:14px; }
+    .ctl-row { display:flex; align-items:center; gap:12px; margin-top:10px; }
+    .ctl-row label { font-size:12.5px; color:var(--muted); min-width:46px; }
+    input[type=range] { flex:1; accent-color:var(--orange); }
+
+    .readout {
+      margin-top:12px; font-size:13px; color:var(--muted);
+      background:var(--panel2); border:1px solid var(--line); border-radius:10px; padding:11px 13px;
+    }
+    .readout b { color:#fff; }
+
+    .btn {
+      display:flex; align-items:center; justify-content:center; gap:9px;
+      width:100%; margin-top:14px; padding:14px;
+      background:var(--orange); color:#fff; border:none; border-radius:12px;
+      font-family:'Archivo',sans-serif; font-weight:800; font-size:14px;
+      text-transform:uppercase; letter-spacing:.03em; cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .btn:disabled { background:var(--panel2); color:var(--muted); cursor:default; }
+    .btn.secondary { background:var(--panel2); border:1px solid var(--line); color:#fff; }
+
+    .hint { font-size:12px; color:var(--muted); margin-top:10px; line-height:1.45; }
+    .hint b { color:#fff; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Photo Crop Helper</h1>
+    <p>Frame a photo to fit the app, then download it ready to upload.</p>
+  </header>
+
+  <div class="wrap">
+
+    <!-- STEP 1: choose slot -->
+    <div class="card">
+      <div class="step-label">1 · Where will this photo go?</div>
+      <div class="slots" id="slots">
+        <div class="slot active" data-key="band"><b>Button band</b><span>1600×250</span></div>
+        <div class="slot" data-key="hero"><b>Hero</b><span>1600×950</span></div>
+        <div class="slot" data-key="footer"><b>Footer</b><span>1600×460</span></div>
+      </div>
+    </div>
+
+    <!-- STEP 2: add photo -->
+    <div class="card">
+      <div class="step-label">2 · Add your photo</div>
+      <div class="drop" id="drop">
+        <b>Tap to choose a photo</b><br>or drag &amp; drop it here
+      </div>
+      <input type="file" id="file" accept="image/*">
+    </div>
+
+    <!-- STEP 3: frame -->
+    <div class="card hidden" id="frameCard">
+      <div class="step-label">3 · Drag to frame · pinch/slider to zoom</div>
+      <div class="stage">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="controls">
+        <div class="ctl-row">
+          <label>Zoom</label>
+          <input type="range" id="zoom" min="30" max="100" value="100">
+        </div>
+      </div>
+      <div class="readout" id="readout"></div>
+      <button class="btn" id="download">⬇ Download cropped photo</button>
+      <button class="btn secondary" id="reset">Choose a different photo</button>
+      <p class="hint">The shaded area is cropped away — only the clear box shows in the app. Cropping to the exact size means it always fits perfectly. (If you'd rather upload the original, use the <b>Image Focus</b> setting noted above.)</p>
+    </div>
+
+  </div>
+
+<script>
+// Output sizes per slot (match the CMS hints + app layout).
+var SLOTS = {
+  band:   { w: 1600, h: 250, name: 'band' },
+  hero:   { w: 1600, h: 950, name: 'hero' },
+  footer: { w: 1600, h: 460, name: 'footer' }
+};
+
+var slot = 'band';
+var img = null;            // loaded HTMLImageElement
+var nat = { w: 0, h: 0 };  // natural size
+var box = { x: 0, y: 0, w: 0, h: 0 }; // crop rect in natural px
+var zoom = 1;             // fraction of natural width used for box width
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+var dispScale = 1;        // displayW / naturalW
+
+function aspect() { return SLOTS[slot].w / SLOTS[slot].h; }
+
+function initBox() {
+  var a = aspect();
+  var w = nat.w * zoom;
+  var h = w / a;
+  if (h > nat.h) { h = nat.h; w = h * a; }
+  if (w > nat.w) { w = nat.w; h = w / a; }
+  // keep current center if possible
+  var cx = (box.w ? box.x + box.w / 2 : nat.w / 2);
+  var cy = (box.h ? box.y + box.h / 2 : nat.h / 2);
+  box.w = w; box.h = h;
+  box.x = clamp(cx - w / 2, 0, nat.w - w);
+  box.y = clamp(cy - h / 2, 0, nat.h - h);
+}
+
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+function layout() {
+  // Fit canvas to container width, internal resolution = display size * dpr-ish (cap).
+  var cssW = canvas.clientWidth || 320;
+  dispScale = cssW / nat.w;
+  var cssH = nat.h * dispScale;
+  canvas.width = Math.round(cssW);
+  canvas.height = Math.round(cssH);
+  canvas.style.height = cssH + 'px';
+}
+
+function render() {
+  if (!img) return;
+  layout();
+  var s = dispScale;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+  var bx = box.x * s, by = box.y * s, bw = box.w * s, bh = box.h * s;
+
+  // dim everything, then clear the crop window
+  ctx.fillStyle = 'rgba(8,11,15,0.66)';
+  ctx.fillRect(0, 0, canvas.width, by);
+  ctx.fillRect(0, by + bh, canvas.width, canvas.height - (by + bh));
+  ctx.fillRect(0, by, bx, bh);
+  ctx.fillRect(bx + bw, by, canvas.width - (bx + bw), bh);
+
+  // crop border
+  ctx.strokeStyle = '#ee6b2d';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(bx + 1, by + 1, bw - 2, bh - 2);
+
+  updateReadout();
+}
+
+function updateReadout() {
+  var ro = document.getElementById('readout');
+  var fullWidth = Math.abs(box.w - nat.w) < 1;
+  if (fullWidth && nat.h - box.h > 1) {
+    var pct = Math.round((box.y / (nat.h - box.h)) * 100);
+    var label = nearestFocus(pct);
+    ro.innerHTML = 'Output: <b>' + SLOTS[slot].w + '×' + SLOTS[slot].h + '</b>. ' +
+      'If you upload the <b>original</b> instead of the crop, set <b>Image Focus = ' + label + '</b>.';
+  } else {
+    ro.innerHTML = 'Output: <b>' + SLOTS[slot].w + '×' + SLOTS[slot].h + '</b>. ' +
+      'Download the cropped photo and upload that — it will fit exactly.';
+  }
+}
+
+function nearestFocus(pct) {
+  var stops = [[0,'Top'],[25,'Upper'],[50,'Center'],[75,'Lower'],[100,'Bottom']];
+  var best = stops[0], bd = 999;
+  stops.forEach(function (s) { var d = Math.abs(s[0] - pct); if (d < bd) { bd = d; best = s; } });
+  return best[1] + ' (' + best[0] + '%)';
+}
+
+// ── Loading ──
+function loadFile(file) {
+  if (!file || !/^image\//.test(file.type)) return;
+  var url = URL.createObjectURL(file);
+  var im = new Image();
+  im.onload = function () {
+    img = im; nat.w = im.naturalWidth; nat.h = im.naturalHeight;
+    zoom = 1; box = { x: 0, y: 0, w: 0, h: 0 };
+    document.getElementById('zoom').value = 100;
+    initBox();
+    document.getElementById('frameCard').classList.remove('hidden');
+    document.getElementById('download').disabled = false;
+    render();
+    document.getElementById('frameCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  im.src = url;
+}
+
+// ── Download ──
+function downloadCrop() {
+  if (!img) return;
+  var out = document.createElement('canvas');
+  out.width = SLOTS[slot].w; out.height = SLOTS[slot].h;
+  var octx = out.getContext('2d');
+  octx.drawImage(img, box.x, box.y, box.w, box.h, 0, 0, out.width, out.height);
+  out.toBlob(function (blob) {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'purpose-' + SLOTS[slot].name + '-' + SLOTS[slot].w + 'x' + SLOTS[slot].h + '.jpg';
+    document.body.appendChild(a); a.click(); a.remove();
+  }, 'image/jpeg', 0.9);
+}
+
+// ── Drag ──
+var dragging = false, last = null;
+function pt(e) { var t = e.touches ? e.touches[0] : e; return { x: t.clientX, y: t.clientY }; }
+function onDown(e) { if (!img) return; dragging = true; last = pt(e); e.preventDefault(); }
+function onMove(e) {
+  if (!dragging) return;
+  var p = pt(e);
+  var dx = (p.x - last.x) / dispScale;
+  var dy = (p.y - last.y) / dispScale;
+  last = p;
+  box.x = clamp(box.x - dx, 0, nat.w - box.w);
+  box.y = clamp(box.y - dy, 0, nat.h - box.h);
+  render();
+  e.preventDefault();
+}
+function onUp() { dragging = false; }
+
+canvas.addEventListener('mousedown', onDown);
+window.addEventListener('mousemove', onMove);
+window.addEventListener('mouseup', onUp);
+canvas.addEventListener('touchstart', onDown, { passive: false });
+canvas.addEventListener('touchmove', onMove, { passive: false });
+canvas.addEventListener('touchend', onUp);
+
+// ── Controls ──
+document.getElementById('zoom').addEventListener('input', function () {
+  zoom = parseInt(this.value, 10) / 100;
+  initBox(); render();
+});
+document.getElementById('slots').addEventListener('click', function (e) {
+  var el = e.target.closest('.slot'); if (!el) return;
+  slot = el.getAttribute('data-key');
+  [].forEach.call(this.children, function (c) { c.classList.toggle('active', c === el); });
+  if (img) { initBox(); render(); }
+});
+document.getElementById('download').addEventListener('click', downloadCrop);
+document.getElementById('reset').addEventListener('click', function () {
+  document.getElementById('file').value = '';
+  document.getElementById('file').click();
+});
+
+// ── File input + drag/drop ──
+var drop = document.getElementById('drop'), fileInput = document.getElementById('file');
+drop.addEventListener('click', function () { fileInput.click(); });
+fileInput.addEventListener('change', function () { loadFile(this.files[0]); });
+['dragenter', 'dragover'].forEach(function (ev) {
+  drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('over'); });
+});
+['dragleave', 'drop'].forEach(function (ev) {
+  drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('over'); });
+});
+drop.addEventListener('drop', function (e) { loadFile(e.dataTransfer.files[0]); });
+
+window.addEventListener('resize', function () { if (img) render(); });
+</script>
+</body>
+</html>

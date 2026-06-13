@@ -66,7 +66,7 @@
     .hero::before {
       content: ""; position: absolute; inset: 0;
       background-image: var(--heroimg);
-      background-size: cover; background-position: center 30%;
+      background-size: cover; background-position: center var(--hpy, 35%);
     }
     .hero::after {
       content: ""; position: absolute; inset: 0;
@@ -129,7 +129,7 @@
     .disc::before {
       content: ""; position: absolute; inset: 0;
       background-image: var(--d);
-      background-size: cover; background-position: center 26%;
+      background-size: cover; background-position: center var(--dpy, 40%);
     }
     .disc::after {
       content: ""; position: absolute; inset: 0;
@@ -263,7 +263,7 @@ function makeBand(tile) {
   a.target = '_blank';
   a.rel = 'noopener';
   if (tile.image) a.style.setProperty('--i', bgVar(tile.image));
-  if (tile.py)    a.style.setProperty('--py', tile.py);
+  if (tile.focus) a.style.setProperty('--py', tile.focus);
 
   var ic = document.createElement('span');
   ic.className = 'ic';
@@ -289,6 +289,7 @@ function render(data) {
   // Hero
   var hero = document.getElementById('js-hero');
   if (data.hero && data.hero.image) hero.style.setProperty('--heroimg', bgVar(data.hero.image));
+  if (data.hero && data.hero.focus) hero.style.setProperty('--hpy', data.hero.focus);
   document.getElementById('js-headline').textContent = (data.hero && data.hero.headline) || '';
 
   var times = (data.hero && data.hero.serviceTimes) || data.times || '';
@@ -307,7 +308,9 @@ function render(data) {
 
   // Discover footer
   var disc = data.discover || {};
-  if (disc.image) document.getElementById('js-disc').style.setProperty('--d', bgVar(disc.image));
+  var discEl = document.getElementById('js-disc');
+  if (disc.image) discEl.style.setProperty('--d', bgVar(disc.image));
+  if (disc.focus) discEl.style.setProperty('--dpy', disc.focus);
   document.getElementById('js-disc-h').textContent = disc.heading || '';
   document.getElementById('js-disc-p').textContent = disc.body || '';
 }

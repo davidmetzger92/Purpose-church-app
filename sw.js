@@ -1,6 +1,6 @@
 // Service Worker — caches the app shell for offline use.
 // Bump the version string any time you deploy an update.
-const VERSION = 'purpose-app-v5';
+const VERSION = 'purpose-app-v6';
 const SHELL = [
   './',
   './index.html',

@@ -31,7 +31,22 @@ collections:
             name: hero
             widget: object
             fields:
-              - { label: "Background Photo", name: image, widget: image }
+              - label: "Background Photo"
+                name: image
+                widget: image
+                hint: "Landscape photo, at least ~1600×950px. The left side is darkened for the logo + headline."
+              - label: "Image Focus"
+                name: focus
+                widget: select
+                required: false
+                default: "35%"
+                hint: "Which part of the photo shows — move the crop up or down."
+                options:
+                  - { label: "Top", value: "0%" }
+                  - { label: "Upper", value: "25%" }
+                  - { label: "Center", value: "50%" }
+                  - { label: "Lower", value: "75%" }
+                  - { label: "Bottom", value: "100%" }
               - label: "Headline"
                 name: headline
                 widget: string
@@ -70,7 +85,22 @@ collections:
                 name: url
                 widget: string
                 hint: "Where the band goes. Opens in the browser."
-              - { label: "Background Photo", name: image, widget: image }
+              - label: "Background Photo"
+                name: image
+                widget: image
+                hint: "Wide letterbox band. For a perfect fit, crop to about 1600×250px (~6.5:1). Otherwise use Image Focus below to pick which slice shows."
+              - label: "Image Focus"
+                name: focus
+                widget: select
+                required: false
+                default: "50%"
+                hint: "Which part of the photo shows in the band — move the crop up or down."
+                options:
+                  - { label: "Top", value: "0%" }
+                  - { label: "Upper", value: "25%" }
+                  - { label: "Center", value: "50%" }
+                  - { label: "Lower", value: "75%" }
+                  - { label: "Bottom", value: "100%" }
 
           # ── DISCOVER FOOTER ──
           - label: "Discover Footer"
@@ -79,7 +109,22 @@ collections:
             fields:
               - { label: "Heading", name: heading, widget: string }
               - { label: "Body Text", name: body, widget: text }
-              - { label: "Background Photo", name: image, widget: image }
+              - label: "Background Photo"
+                name: image
+                widget: image
+                hint: "Wide banner. For a perfect fit, crop to about 1600×460px (~3.5:1)."
+              - label: "Image Focus"
+                name: focus
+                widget: select
+                required: false
+                default: "40%"
+                hint: "Which part of the photo shows — move the crop up or down."
+                options:
+                  - { label: "Top", value: "0%" }
+                  - { label: "Upper", value: "25%" }
+                  - { label: "Center", value: "50%" }
+                  - { label: "Lower", value: "75%" }
+                  - { label: "Bottom", value: "100%" }
 
           # ── LEGACY (kept so older revert points still work) ──
           - { label: "Service Times (legacy)", name: times, widget: string, required: false }
