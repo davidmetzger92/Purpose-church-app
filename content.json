@@ -9,7 +9,8 @@
       "label": "I'm New",
       "icon": "user",
       "url": "https://purposearizona.com/connectcard",
-      "image": "/photos/AboutSection3.jpg"
+      "image": "/photos/AboutSection3.jpg",
+      "focus": "50%"
     },
     {
       "label": "Message Notes",
