@@ -10,7 +10,7 @@
       "icon": "user",
       "url": "https://purposearizona.com/connectcard",
       "image": "/photos/AboutSection3.jpg",
-      "focus": "50%"
+      "focus": "100%"
     },
     {
       "label": "Message Notes",
@@ -19,16 +19,16 @@
       "image": "/photos/19751.jpg"
     },
     {
-      "label": "Join the Dream Team",
-      "icon": "users",
-      "url": "https://purposearizona.com/serve",
-      "image": "/photos/19745.jpg"
-    },
-    {
       "label": "Spiritual Gifts",
       "icon": "sparkle",
       "url": "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b",
       "image": "/photos/19740.jpg"
+    },
+    {
+      "label": "Join the Dream Team",
+      "icon": "users",
+      "url": "https://purposearizona.com/serve",
+      "image": "/photos/19745.jpg"
     },
     {
       "label": "Give",
