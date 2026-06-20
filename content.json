@@ -20,22 +20,25 @@
       "focus": "0%"
     },
     {
-      "label": "Spiritual Gifts",
+      "label": "Saturday, July 18th Serve",
       "icon": "sparkle",
-      "url": "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b",
-      "image": "/photos/19740.jpg"
+      "url": "https://purposearizona.com/serving",
+      "image": "/photos/6.jpg",
+      "focus": "50%"
     },
     {
       "label": "Join the Dream Team",
       "icon": "users",
       "url": "https://purposearizona.com/serve",
-      "image": "/photos/19745.jpg"
+      "image": "/photos/719969775_18075599276663838_6081361271463006305_n.jpg",
+      "focus": "25%"
     },
     {
       "label": "Give",
       "icon": "gift",
       "url": "https://purpose.mywell.org",
-      "image": "/photos/19755.jpg"
+      "image": "/photos/4.jpg",
+      "focus": "50%"
     },
     {
       "label": "Plan a Visit",
