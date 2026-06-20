@@ -16,7 +16,8 @@
       "label": "Message Notes",
       "icon": "file",
       "url": "https://purposearizona.com/notes",
-      "image": "/photos/19751.jpg"
+      "image": "/photos/19751.jpg",
+      "focus": "75%"
     },
     {
       "label": "Spiritual Gifts",
