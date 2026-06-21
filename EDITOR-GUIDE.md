@@ -44,5 +44,10 @@ That's it for setup. You only do this once.
 - **Links** open in the browser when tapped — that's normal.
 - **Adding a button:** under Quick-Link Buttons, click the **+ Add** button,
   fill in the name, pick an icon, paste the link, then Save.
+- **Hiding instead of deleting:** every button (and the service times and
+  Discover footer) has a **Hide on app** switch. Turn it **ON** to keep
+  something saved but hide it from the app — handy for recurring items you
+  don't want up every week. Turn it **OFF** to show it again. No need to
+  delete and re-create.
 - **Stuck or unsure?** Don't force it — text David before changing anything
   you're not confident about.

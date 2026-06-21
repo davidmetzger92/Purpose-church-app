@@ -55,6 +55,12 @@ collections:
                 name: serviceTimes
                 widget: string
                 hint: 'Shown in the pill, e.g. "Sundays 9 & 10:30am"'
+              - label: "Hide service times"
+                name: hideTimes
+                widget: boolean
+                required: false
+                default: false
+                hint: "Turn ON to hide the service-times pill without deleting the text."
 
           # ── DESTINATION BANDS ──
           - label: "Buttons (photo bands)"
@@ -62,9 +68,15 @@ collections:
             widget: list
             label_singular: "Button"
             summary: "{{fields.label}}"
-            hint: "Add, remove, reorder, or rename the photo bands on the home screen."
+            hint: "Add, remove, reorder, or rename the photo bands on the home screen. Use Hide on app to keep a button without showing it."
             fields:
               - { label: "Label", name: label, widget: string }
+              - label: "Hide on app (keep for later)"
+                name: hidden
+                widget: boolean
+                required: false
+                default: false
+                hint: "Turn ON to keep this button saved but hide it from the app. Turn OFF to show it again."
               - label: "Icon"
                 name: icon
                 widget: select
@@ -107,6 +119,12 @@ collections:
             name: discover
             widget: object
             fields:
+              - label: "Hide on app (keep for later)"
+                name: hidden
+                widget: boolean
+                required: false
+                default: false
+                hint: "Turn ON to hide the Discover footer without deleting it. Turn OFF to show it again."
               - { label: "Heading", name: heading, widget: string }
               - { label: "Body Text", name: body, widget: text }
               - label: "Background Photo"

@@ -56,7 +56,7 @@
     /* ── HERO ── */
     .hero {
       position: relative;
-      min-height: 248px;
+      min-height: 200px;
       display: flex;
       flex-direction: column;
       padding: max(env(safe-area-inset-top), 17px) 18px 16px;
@@ -80,7 +80,7 @@
       font-family: 'Archivo', sans-serif;
       font-weight: 900; font-size: 40px; line-height: .9;
       letter-spacing: -.02em; color: #fff; text-transform: uppercase;
-      margin-top: 52px;
+      margin-top: 22px;
     }
     .sub {
       margin-top: 12px; align-self: flex-start;
@@ -230,20 +230,22 @@ var FALLBACK = {
   hero: {
     image: "photos/hero.jpg",
     headline: "Take Your Next Step",
-    serviceTimes: "Sundays 9 & 10:30am"
+    serviceTimes: "Sundays 9 & 10:30am",
+    hideTimes: true
   },
   tiles: [
     { icon: "user",    label: "I'm New",             url: "https://purposearizona.com/connectcard", image: "photos/tile-new.jpg" },
     { icon: "file",    label: "Message Notes",       url: "https://purposearizona.com/notes",       image: "photos/tile-notes.jpg" },
+    { icon: "sparkle", label: "Saturday, July 18th Serve", url: "https://purposearizona.com/serving", image: "photos/tile-serve.jpg" },
     { icon: "users",   label: "Join the Dream Team", url: "https://purposearizona.com/serve",       image: "photos/tile-serve.jpg" },
-    { icon: "sparkle", label: "Spiritual Gifts",     url: "https://purposearizona.com/page/830?GroupGuid=64c2fe8a-4c62-424e-8282-281500baab2b", image: "photos/tile-gifts.jpg" },
     { icon: "gift",    label: "Give",                url: "https://purpose.mywell.org",             image: "photos/tile-give.jpg" },
-    { icon: "pin",     label: "Plan a Visit",        url: "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338", image: "photos/tile-visit.jpg" }
+    { icon: "pin",     label: "Plan a Visit",        url: "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338", image: "photos/tile-visit.jpg", hidden: true }
   ],
   discover: {
     heading: "Discover Your Purpose",
     body: "We believe you were made on purpose, for a purpose. Come find yours with us.",
-    image: "photos/discover.jpg"
+    image: "photos/discover.jpg",
+    hidden: true
   }
 };
 
@@ -294,7 +296,7 @@ function render(data) {
 
   var times = (data.hero && data.hero.serviceTimes) || data.times || '';
   var pill = document.getElementById('js-times');
-  if (times) {
+  if (times && !(data.hero && data.hero.hideTimes)) {
     document.getElementById('js-times-text').textContent = times;
     pill.style.display = 'inline-flex';
   } else {
@@ -304,15 +306,22 @@ function render(data) {
   // Bands
   var bands = document.getElementById('js-bands');
   bands.textContent = '';
-  (data.tiles || []).forEach(function (t) { bands.appendChild(makeBand(t)); });
+  (data.tiles || [])
+    .filter(function (t) { return !t.hidden; })
+    .forEach(function (t) { bands.appendChild(makeBand(t)); });
 
   // Discover footer
   var disc = data.discover || {};
   var discEl = document.getElementById('js-disc');
-  if (disc.image) discEl.style.setProperty('--d', bgVar(disc.image));
-  if (disc.focus) discEl.style.setProperty('--dpy', disc.focus);
-  document.getElementById('js-disc-h').textContent = disc.heading || '';
-  document.getElementById('js-disc-p').textContent = disc.body || '';
+  if (disc.hidden || !disc.heading) {
+    discEl.style.display = 'none';
+  } else {
+    discEl.style.display = 'flex';
+    if (disc.image) discEl.style.setProperty('--d', bgVar(disc.image));
+    if (disc.focus) discEl.style.setProperty('--dpy', disc.focus);
+    document.getElementById('js-disc-h').textContent = disc.heading || '';
+    document.getElementById('js-disc-p').textContent = disc.body || '';
+  }
 }
 
 // Cache-bust so edits show up promptly even with the service worker.
