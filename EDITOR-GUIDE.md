@@ -20,7 +20,7 @@ That's it for setup. You only do this once.
 ## To make a change (every time)
 
 1. Go to the editor:
-   **https://davidmetzger92.github.io/Purpose-church-app/admin/**
+   **https://app.purposearizona.com/admin/**
    *(Keep this link to yourself — it's the staff editor, not the public app.)*
 2. Click **Sign In with GitHub** and approve.
 3. Click **App Content** → **Home Screen**.
