@@ -2,7 +2,7 @@
 
 The app has a no-code editor at:
 
-> **https://davidmetzger92.github.io/Purpose-church-app/admin/**
+> **https://app.purposearizona.com/admin/**
 
 Staff log in with GitHub and edit the buttons, links, and service times through
 simple form fields. They never touch code and can't break the layout.
@@ -30,7 +30,7 @@ You need a [GitHub](https://github.com) account (you have one) and a free
    **New OAuth App**.
 2. Fill in:
    - **Application name:** `Purpose App Editor`
-   - **Homepage URL:** `https://davidmetzger92.github.io/Purpose-church-app/`
+   - **Homepage URL:** `https://app.purposearizona.com/`
    - **Authorization callback URL:** `https://example.com/callback`
      *(temporary — you'll fix this in Step 3)*
 3. Click **Register application**.
@@ -47,7 +47,10 @@ You need a [GitHub](https://github.com) account (you have one) and a free
 2. When prompted, add these **environment variables / secrets**:
    - `GITHUB_CLIENT_ID` → the Client ID from Step 1
    - `GITHUB_CLIENT_SECRET` → the Client Secret from Step 1
-   - `ALLOWED_DOMAINS` → `davidmetzger92.github.io`
+   - `ALLOWED_DOMAINS` → `app.purposearizona.com`
+     *(during the move you can list both, comma-separated:
+     `davidmetzger92.github.io,app.purposearizona.com`, then drop the old one once
+     everything points at the new domain)*
 3. After it deploys, copy the Worker URL. It looks like:
    `https://sveltia-cms-auth.your-name.workers.dev`
 
@@ -79,7 +82,7 @@ Each person who should edit needs a free GitHub account, then:
 
 ## Using the editor (what staff do)
 
-1. Visit **https://davidmetzger92.github.io/Purpose-church-app/admin/**
+1. Visit **https://app.purposearizona.com/admin/**
 2. Click **Log in with GitHub** → approve.
 3. Open **App Content → Home Screen**, change a field, click **Publish**.
 4. The app updates automatically in about a minute.
