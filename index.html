@@ -325,7 +325,9 @@ function render(data) {
 }
 
 // Cache-bust so edits show up promptly even with the service worker.
-fetch('content.json?v=' + Date.now())
+// priority:'high' lets the browser resolve the hero/tile image URLs sooner
+// (ignored by browsers that don't support it).
+fetch('content.json?v=' + Date.now(), { priority: 'high' })
   .then(function (res) {
     if (!res.ok) throw new Error('content fetch failed');
     return res.json();

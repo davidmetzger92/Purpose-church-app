@@ -1,6 +1,7 @@
 // Service Worker — caches the app shell for offline use.
 // Bump the version string any time you deploy an update.
-const VERSION = 'purpose-app-v6';
+const VERSION = 'purpose-app-v7';
+const PHOTO_CACHE = 'purpose-photos-v1';
 const SHELL = [
   './',
   './index.html',
@@ -18,11 +19,11 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('activate', function (event) {
-  // Remove old caches on update
+  // Remove old caches on update (keep the current shell + photo caches)
   event.waitUntil(
     caches.keys().then(function (keys) {
       return Promise.all(
-        keys.filter(function (k) { return k !== VERSION; })
+        keys.filter(function (k) { return k !== VERSION && k !== PHOTO_CACHE; })
             .map(function (k) { return caches.delete(k); })
       );
     })
@@ -40,6 +41,24 @@ self.addEventListener('fetch', function (event) {
     );
     return;
   }
+
+  // Photos: stale-while-revalidate. Serve instantly from cache on repeat
+  // visits, refresh in the background so CMS updates still come through.
+  if (/\/photos\//.test(event.request.url)) {
+    event.respondWith(
+      caches.open(PHOTO_CACHE).then(function (cache) {
+        return cache.match(event.request).then(function (cached) {
+          var network = fetch(event.request).then(function (res) {
+            if (res && res.ok) cache.put(event.request, res.clone());
+            return res;
+          }).catch(function () { return cached; });
+          return cached || network;
+        });
+      })
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then(function (cached) {
       return cached || fetch(event.request);

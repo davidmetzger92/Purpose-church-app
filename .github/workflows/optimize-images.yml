@@ -1,0 +1,50 @@
+name: Optimize images
+
+# Photos uploaded via the CMS (/admin) land in /photos at full camera resolution.
+# This shrinks them for fast web delivery and commits the optimized versions back.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "photos/**"
+
+# Allow the workflow to commit the optimized images back to the branch.
+permissions:
+  contents: write
+
+# If several uploads land quickly, let the latest run win.
+concurrency:
+  group: optimize-images
+  cancel-in-progress: false
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: pip install --quiet pillow
+
+      - name: Optimize photos
+        run: python3 scripts/optimize-images.py
+
+      - name: Commit optimized images
+        run: |
+          if [ -z "$(git status --porcelain photos)" ]; then
+            echo "No changes — images already optimized."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add photos
+          # [skip ci] stops this commit from re-triggering the workflow.
+          git commit -m "Auto-optimize uploaded photos [skip ci]"
+          git push
