@@ -21,7 +21,15 @@
       "focus": "50%"
     },
     {
+      "label": "Find Your Place At Purpose",
+      "icon": "sparkle",
+      "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20125",
+      "image": "/photos/BRANDON.jpg",
+      "focus": "25%"
+    },
+    {
       "label": "Saturday, July 18th Serve",
+      "hidden": true,
       "icon": "sparkle",
       "url": "https://purposearizona.com/serving",
       "image": "/photos/BRANDON.jpg",
@@ -43,17 +51,17 @@
     },
     {
       "label": "Plan a Visit",
+      "hidden": true,
       "icon": "pin",
       "url": "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338",
-      "image": "/photos/19742.jpg",
-      "hidden": true
+      "image": "/photos/19742.jpg"
     }
   ],
   "discover": {
+    "hidden": true,
     "heading": "Discover Your Purpose",
     "body": "We believe you were made on purpose, for a purpose. Come find yours with us.",
-    "image": "/photos/19752.jpg",
-    "hidden": true
+    "image": "/photos/19752.jpg"
   },
   "times": "Sundays 9 & 10:30am",
   "location": {
