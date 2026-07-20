@@ -14,7 +14,15 @@
       "focus": "75%"
     },
     {
+      "label": "PRAY ALL DAY",
+      "icon": "file",
+      "url": "https://weprayallday.com/signup?date=Sat%20Aug%2001%202026",
+      "image": "/photos/A7403350 3.jpg",
+      "focus": "50%"
+    },
+    {
       "label": "Message Notes",
+      "hidden": true,
       "icon": "file",
       "url": "https://purposearizona.com/notes",
       "image": "/photos/A7403350 3.jpg",
