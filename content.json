@@ -36,8 +36,8 @@
       "focus": "25%"
     },
     {
-      "label": "Saturday, July 18th Serve",
-      "hidden": true,
+      "label": "Saturday, August 8th Serve",
+      "hidden": false,
       "icon": "sparkle",
       "url": "https://purposearizona.com/serving",
       "image": "/photos/BRANDON.jpg",
