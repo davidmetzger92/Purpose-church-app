@@ -30,6 +30,7 @@
     },
     {
       "label": "Find Your Place At Purpose",
+      "hidden": true,
       "icon": "sparkle",
       "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20125",
       "image": "/photos/BRANDON.jpg",
