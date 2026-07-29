@@ -61,10 +61,11 @@
     },
     {
       "label": "Give",
-      "icon": "gift",
+      "hidden": false,
+      "icon": "sparkle",
       "url": "https://purpose.mywell.org",
       "image": "/photos/BRANDON.jpg",
-      "focus": "50%"
+      "focus": "25%"
     },
     {
       "label": "Plan a Visit",
