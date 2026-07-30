@@ -54,7 +54,15 @@
     },
     {
       "label": "GET BAPTIZED",
+      "hidden": true,
       "icon": "gift",
+      "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20123",
+      "image": "/photos/David Valero.jpg",
+      "focus": "50%"
+    },
+    {
+      "label": "GET BAPTIZED",
+      "icon": "music",
       "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20123",
       "image": "/photos/David Valero.jpg",
       "focus": "50%"
@@ -62,7 +70,7 @@
     {
       "label": "Give",
       "hidden": false,
-      "icon": "sparkle",
+      "icon": "gift",
       "url": "https://purpose.mywell.org",
       "image": "/photos/BRANDON.jpg",
       "focus": "25%"
