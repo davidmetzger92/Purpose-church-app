@@ -62,7 +62,7 @@
     },
     {
       "label": "SHARE YOUR STORY",
-      "hidden": true,
+      "hidden": false,
       "icon": "gift",
       "url": "https://purposearizona.com/story",
       "image": "/photos/David Valero.jpg",
