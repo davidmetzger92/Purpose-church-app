@@ -61,6 +61,14 @@
       "focus": "50%"
     },
     {
+      "label": "SHARE YOUR STORY",
+      "hidden": true,
+      "icon": "gift",
+      "url": "https://purposearizona.com/story",
+      "image": "/photos/David Valero.jpg",
+      "focus": "50%"
+    },
+    {
       "label": "GET BAPTIZED",
       "icon": "sparkle",
       "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20123",
