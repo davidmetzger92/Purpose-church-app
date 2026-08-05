@@ -70,6 +70,7 @@
     },
     {
       "label": "GET BAPTIZED",
+      "hidden": true,
       "icon": "sparkle",
       "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20123",
       "image": "/photos/David Valero.jpg",
