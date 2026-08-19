@@ -41,7 +41,7 @@
     },
     {
       "label": "First Responders Serve",
-      "hidden": true,
+      "hidden": false,
       "icon": "sparkle",
       "url": "https://www.signupgenius.com/go/10C084BA4AD2CA4F4C43-65120756-thank#/",
       "image": "/photos/5.jpg",
