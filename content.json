@@ -1,6 +1,7 @@
 {
   "hero": {
     "image": "/photos/19747.jpg",
+    "focus": "35%",
     "headline": "Take Your Next Step",
     "serviceTimes": "Sundays 9 & 10:30am",
     "hideTimes": true
@@ -8,6 +9,7 @@
   "tiles": [
     {
       "label": "I'm New",
+      "hidden": false,
       "icon": "user",
       "url": "https://purposearizona.com/connectcard",
       "image": "/photos/AboutSection3.jpg",
@@ -46,23 +48,24 @@
       "focus": "0%"
     },
     {
-      "label": "Join the Events Team",
+      "label": "Join the DreamTeam",
+      "hidden": false,
       "icon": "users",
-      "url": "https://purposearizona.com/events",
+      "url": "https://purposearizona.com/serve",
       "image": "/photos/IMG_0248.jpg",
       "focus": "25%"
     },
     {
       "label": "GET BAPTIZED",
-      "hidden": true,
+      "hidden": false,
       "icon": "gift",
-      "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20123",
+      "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20127",
       "image": "/photos/David Valero.jpg",
       "focus": "50%"
     },
     {
       "label": "SHARE YOUR STORY",
-      "hidden": false,
+      "hidden": true,
       "icon": "gift",
       "url": "https://purposearizona.com/story",
       "image": "/photos/David Valero.jpg",
@@ -89,14 +92,16 @@
       "hidden": true,
       "icon": "pin",
       "url": "https://www.google.com/maps/search/?api=1&query=Desert+Edge+High+School+15778+W+Yuma+Rd+Goodyear+AZ+85338",
-      "image": "/photos/19742.jpg"
+      "image": "/photos/19742.jpg",
+      "focus": "50%"
     }
   ],
   "discover": {
     "hidden": true,
     "heading": "Discover Your Purpose",
     "body": "We believe you were made on purpose, for a purpose. Come find yours with us.",
-    "image": "/photos/19752.jpg"
+    "image": "/photos/19752.jpg",
+    "focus": "40%"
   },
   "times": "Sundays 9 & 10:30am",
   "location": {
