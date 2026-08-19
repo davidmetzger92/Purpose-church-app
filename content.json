@@ -40,10 +40,10 @@
       "focus": "25%"
     },
     {
-      "label": "Saturday, August 8th Serve",
+      "label": "First Responders Serve",
       "hidden": true,
       "icon": "sparkle",
-      "url": "https://purposearizona.com/serving",
+      "url": "https://www.signupgenius.com/go/10C084BA4AD2CA4F4C43-65120756-thank#/",
       "image": "/photos/5.jpg",
       "focus": "0%"
     },
@@ -57,7 +57,7 @@
     },
     {
       "label": "GET BAPTIZED",
-      "hidden": false,
+      "hidden": true,
       "icon": "sparkle",
       "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20127",
       "image": "/photos/David Valero.jpg",
