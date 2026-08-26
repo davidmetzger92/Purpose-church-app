@@ -65,9 +65,17 @@
     },
     {
       "label": "MEN'S NIGHT",
-      "hidden": false,
+      "hidden": true,
       "icon": "users",
       "url": "https://purposearizona.com/page/414?EventOccurrenceId=129",
+      "image": "/photos/IMG_0248.jpg",
+      "focus": "25%"
+    },
+    {
+      "label": "JOIN THE KIDS TEAM",
+      "hidden": false,
+      "icon": "users",
+      "url": "https://purposearizona.com/page/819?OpportunityId=23",
       "image": "/photos/IMG_0248.jpg",
       "focus": "25%"
     },
