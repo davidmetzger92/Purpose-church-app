@@ -41,17 +41,33 @@
     },
     {
       "label": "First Responders Serve",
-      "hidden": false,
+      "hidden": true,
       "icon": "sparkle",
       "url": "https://www.signupgenius.com/go/10C084BA4AD2CA4F4C43-65120756-thank#/",
       "image": "/photos/5.jpg",
       "focus": "0%"
     },
     {
-      "label": "Join the DreamTeam",
+      "label": "Child Dedication",
       "hidden": false,
+      "icon": "sparkle",
+      "url": "https://purposearizona.com/dedications",
+      "image": "/photos/5.jpg",
+      "focus": "0%"
+    },
+    {
+      "label": "Join the DreamTeam",
+      "hidden": true,
       "icon": "users",
       "url": "https://purposearizona.com/serve",
+      "image": "/photos/IMG_0248.jpg",
+      "focus": "25%"
+    },
+    {
+      "label": "MEN'S NIGHT",
+      "hidden": false,
+      "icon": "users",
+      "url": "https://purposearizona.com/page/414?EventOccurrenceId=129",
       "image": "/photos/IMG_0248.jpg",
       "focus": "25%"
     },
