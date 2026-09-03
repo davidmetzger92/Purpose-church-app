@@ -33,9 +33,9 @@
     },
     {
       "label": "Find Your Place At Purpose",
-      "hidden": true,
+      "hidden": false,
       "icon": "sparkle",
-      "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20125",
+      "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20126",
       "image": "/photos/BRANDON.jpg",
       "focus": "25%"
     },
@@ -49,7 +49,7 @@
     },
     {
       "label": "Child Dedication",
-      "hidden": false,
+      "hidden": true,
       "icon": "sparkle",
       "url": "https://purposearizona.com/dedications",
       "image": "/photos/5.jpg",
@@ -65,7 +65,7 @@
     },
     {
       "label": "MEN'S NIGHT",
-      "hidden": true,
+      "hidden": false,
       "icon": "users",
       "url": "https://purposearizona.com/page/414?EventOccurrenceId=129",
       "image": "/photos/IMG_0248.jpg",
@@ -73,7 +73,7 @@
     },
     {
       "label": "JOIN THE KIDS TEAM",
-      "hidden": false,
+      "hidden": true,
       "icon": "users",
       "url": "https://purposearizona.com/page/819?OpportunityId=23",
       "image": "/photos/IMG_0248.jpg",
