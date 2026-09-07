@@ -48,6 +48,14 @@
       "focus": "0%"
     },
     {
+      "label": "JOIN A GROUP",
+      "hidden": false,
+      "icon": "sparkle",
+      "url": "https://purposearizona.com/groups",
+      "image": "/photos/5.jpg",
+      "focus": "0%"
+    },
+    {
       "label": "Child Dedication",
       "hidden": true,
       "icon": "sparkle",
