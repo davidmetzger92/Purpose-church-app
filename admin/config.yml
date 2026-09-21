@@ -39,7 +39,7 @@ collections:
                 name: focus
                 widget: select
                 required: false
-                default: "35%"
+                default: "25%"
                 hint: "Which part of the photo shows — move the crop up or down."
                 options:
                   - { label: "Top", value: "0%" }
@@ -135,7 +135,7 @@ collections:
                 name: focus
                 widget: select
                 required: false
-                default: "40%"
+                default: "50%"
                 hint: "Which part of the photo shows — move the crop up or down."
                 options:
                   - { label: "Top", value: "0%" }
