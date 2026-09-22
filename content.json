@@ -40,10 +40,10 @@
       "focus": "25%"
     },
     {
-      "label": "First Responders Serve",
-      "hidden": true,
+      "label": "Saturday Serve (October 10th)",
+      "hidden": false,
       "icon": "sparkle",
-      "url": "https://www.signupgenius.com/go/10C084BA4AD2CA4F4C43-65120756-thank#/",
+      "url": "purposearizona.com/serving",
       "image": "/photos/5.jpg",
       "focus": "0%"
     },
