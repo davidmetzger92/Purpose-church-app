@@ -40,10 +40,10 @@
       "focus": "25%"
     },
     {
-      "label": "Serve At Candypalooza",
+      "label": "Spiritual Gifts",
       "hidden": false,
       "icon": "sparkle",
-      "url": "https://purposearizona.com/events",
+      "url": "https://purposearizona.com/page/830?GroupGuid=83b90eda-b5ce-497c-8ba8-aaa3e4aa10ba",
       "image": "/photos/5.jpg",
       "focus": "0%"
     },
@@ -72,10 +72,10 @@
       "focus": "25%"
     },
     {
-      "label": "MEN'S NIGHT",
-      "hidden": true,
+      "label": "Find Your Place At Purpose",
+      "hidden": false,
       "icon": "users",
-      "url": "https://purposearizona.com/page/414?EventOccurrenceId=129",
+      "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20130",
       "image": "/photos/IMG_0248.jpg",
       "focus": "25%"
     },
