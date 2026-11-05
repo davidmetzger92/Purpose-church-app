@@ -75,7 +75,7 @@
       "label": "Find Your Place At Purpose",
       "hidden": false,
       "icon": "users",
-      "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20130",
+      "url": "https://purposearizona.com/page/414?EventOccurrenceId=136",
       "image": "/photos/IMG_0248.jpg",
       "focus": "25%"
     },
@@ -89,7 +89,7 @@
     },
     {
       "label": "GET BAPTIZED",
-      "hidden": false,
+      "hidden": true,
       "icon": "sparkle",
       "url": "https://purposearizona.com/page/414?EventOccurrenceId=%20127",
       "image": "/photos/David Valero.jpg",
